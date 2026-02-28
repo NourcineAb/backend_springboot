@@ -5,16 +5,18 @@ import com.enterprise.poodle.dto.response.CertificateVerificationResponse;
 import com.enterprise.poodle.entity.Certificate;
 import com.enterprise.poodle.entity.Course;
 import com.enterprise.poodle.entity.Employee;
+import com.enterprise.poodle.exception.BusinessException;
 import com.enterprise.poodle.exception.ResourceNotFoundException;
+import com.enterprise.poodle.mapper.CertificateMapper;
 import com.enterprise.poodle.repository.CertificateRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
 public class CertificateService {
 
     private final CertificateRepository certificateRepository;
+    private final CertificateMapper certificateMapper;
 
     @Transactional
     public void generateCertificateIfEligible(Employee employee, Course course) {
@@ -50,10 +53,9 @@ public class CertificateService {
     }
 
     @Transactional(readOnly = true)
-    public List<CertificateResponse> getMyCertificates(Long employeeId) {
-        return certificateRepository.findByEmployeeId(employeeId).stream()
-                .map(this::mapToResponse)
-                .collect(Collectors.toList());
+    public Page<CertificateResponse> getMyCertificates(Long employeeId, Pageable pageable) {
+        return certificateRepository.findByEmployeeId(employeeId, pageable)
+                .map(this::mapToResponse);
     }
 
     @Transactional(readOnly = true)
@@ -73,16 +75,22 @@ public class CertificateService {
                 .build();
     }
 
+    @Transactional
+    public CertificateResponse revokeCertificate(Long id) {
+        Certificate certificate = certificateRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Certificate", "id", id));
+
+        if (certificate.isRevoked()) {
+            throw new BusinessException("Certificate is already revoked");
+        }
+
+        certificate.setRevoked(true);
+        certificateRepository.save(certificate);
+        log.info("Certificate {} revoked", certificate.getCertificateCode());
+        return mapToResponse(certificate);
+    }
+
     private CertificateResponse mapToResponse(Certificate certificate) {
-        Employee employee = certificate.getEmployee();
-        return CertificateResponse.builder()
-                .id(certificate.getId())
-                .employeeName(employee.getFirstName() + " " + employee.getLastName())
-                .courseTitle(certificate.getCourse().getTitle())
-                .certificateCode(certificate.getCertificateCode())
-                .qrCodeUrl(certificate.getQrCodeUrl())
-                .issuedAt(certificate.getIssuedAt())
-                .revoked(certificate.isRevoked())
-                .build();
+        return certificateMapper.toResponse(certificate);
     }
 }

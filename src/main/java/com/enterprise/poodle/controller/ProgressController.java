@@ -32,4 +32,10 @@ public class ProgressController {
             @PathVariable Long courseId) {
         return ResponseEntity.ok(progressService.getCourseProgress(courseId));
     }
+
+    @PostMapping("/progress/{sectionId}/complete")
+    public ResponseEntity<Void> markSectionCompleted(@PathVariable Long sectionId) {
+        progressService.markSectionCompleted(sectionId);
+        return ResponseEntity.noContent().build();
+    }
 }

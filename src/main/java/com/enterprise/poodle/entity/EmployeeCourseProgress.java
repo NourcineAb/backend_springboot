@@ -42,5 +42,6 @@ public class EmployeeCourseProgress {
     @Builder.Default
     private ProgressStatus status = ProgressStatus.NOT_STARTED;
 
+    @Column(name = "completed_at")
     private LocalDateTime completedAt;
 }

@@ -1,16 +1,21 @@
 package com.enterprise.poodle.service;
 
 import com.enterprise.poodle.dto.request.EmployeeUpdateRequest;
+import com.enterprise.poodle.dto.request.PasswordChangeRequest;
 import com.enterprise.poodle.dto.response.EmployeeResponse;
 import com.enterprise.poodle.entity.Department;
 import com.enterprise.poodle.entity.Employee;
+import com.enterprise.poodle.exception.BusinessException;
 import com.enterprise.poodle.exception.DuplicateResourceException;
 import com.enterprise.poodle.exception.ResourceNotFoundException;
+import com.enterprise.poodle.mapper.EmployeeMapper;
 import com.enterprise.poodle.repository.DepartmentRepository;
 import com.enterprise.poodle.repository.EmployeeRepository;
+import com.enterprise.poodle.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,11 +25,59 @@ public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
     private final DepartmentRepository departmentRepository;
+    private final SecurityUtils securityUtils;
+    private final PasswordEncoder passwordEncoder;
+    private final EmployeeMapper employeeMapper;
 
     @Transactional(readOnly = true)
     public Page<EmployeeResponse> getAllEmployees(Pageable pageable) {
         return employeeRepository.findAllByDeletedFalse(pageable)
                 .map(this::mapToResponse);
+    }
+
+    @Transactional(readOnly = true)
+    public EmployeeResponse getCurrentProfile() {
+        Employee employee = securityUtils.getCurrentEmployee();
+        return mapToResponse(employee);
+    }
+
+    @Transactional
+    public EmployeeResponse updateCurrentProfile(EmployeeUpdateRequest request) {
+        Employee employee = employeeRepository.findByIdAndDeletedFalse(
+                        securityUtils.getCurrentEmployeeId())
+                .orElseThrow(() -> new ResourceNotFoundException("Employee", "id",
+                        securityUtils.getCurrentEmployeeId()));
+
+        if (request.getFirstName() != null) {
+            employee.setFirstName(request.getFirstName());
+        }
+        if (request.getLastName() != null) {
+            employee.setLastName(request.getLastName());
+        }
+        if (request.getEmail() != null && !request.getEmail().equals(employee.getEmail())) {
+            if (employeeRepository.existsByEmailAndDeletedFalse(request.getEmail())) {
+                throw new DuplicateResourceException(
+                        "Employee with email " + request.getEmail() + " already exists");
+            }
+            employee.setEmail(request.getEmail());
+        }
+        // Ignore departmentId for self-update (only admin can change department)
+        Employee saved = employeeRepository.save(employee);
+        return mapToResponse(saved);
+    }
+
+    @Transactional
+    public void changePassword(PasswordChangeRequest request) {
+        Employee employee = employeeRepository.findByIdAndDeletedFalse(
+                        securityUtils.getCurrentEmployeeId())
+                .orElseThrow(() -> new ResourceNotFoundException("Employee", "id",
+                        securityUtils.getCurrentEmployeeId()));
+
+        if (!passwordEncoder.matches(request.getCurrentPassword(), employee.getPassword())) {
+            throw new BusinessException("Current password is incorrect");
+        }
+        employee.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        employeeRepository.save(employee);
     }
 
     @Transactional(readOnly = true)
@@ -72,14 +125,6 @@ public class EmployeeService {
     }
 
     private EmployeeResponse mapToResponse(Employee employee) {
-        return EmployeeResponse.builder()
-                .id(employee.getId())
-                .firstName(employee.getFirstName())
-                .lastName(employee.getLastName())
-                .email(employee.getEmail())
-                .role(employee.getRole())
-                .departmentId(employee.getDepartment() != null ? employee.getDepartment().getId() : null)
-                .departmentName(employee.getDepartment() != null ? employee.getDepartment().getName() : null)
-                .build();
+        return employeeMapper.toResponse(employee);
     }
 }

@@ -10,6 +10,7 @@ import com.enterprise.poodle.enums.CourseStatus;
 import com.enterprise.poodle.exception.BusinessException;
 import com.enterprise.poodle.exception.DuplicateResourceException;
 import com.enterprise.poodle.exception.ResourceNotFoundException;
+import com.enterprise.poodle.mapper.CourseMapper;
 import com.enterprise.poodle.repository.*;
 import com.enterprise.poodle.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,7 @@ public class CourseService {
     private final EmployeeCourseGradeRepository gradeRepository;
     private final SecurityUtils securityUtils;
     private final AuditLogService auditLogService;
+    private final CourseMapper courseMapper;
 
     @Transactional
     public CourseResponse createCourse(CourseRequest request) {
@@ -181,6 +183,24 @@ public class CourseService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public void unassignCourseFromDepartment(Long courseId, Long departmentId) {
+        courseRepository.findByIdAndDeletedFalse(courseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Course", "id", courseId));
+        departmentRepository.findByIdAndDeletedFalse(departmentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Department", "id", departmentId));
+
+        CourseDepartmentAssignment assignment = assignmentRepository
+                .findByCourseIdAndDepartmentId(courseId, departmentId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Assignment", "courseId/departmentId", courseId + "/" + departmentId));
+
+        assignmentRepository.delete(assignment);
+
+        auditLogService.logAction(ActionType.DELETE, "CourseAssignment", assignment.getId(),
+                Map.of("courseId", courseId, "departmentId", departmentId), null);
+    }
+
     public void checkPrerequisites(Long employeeId, Long courseId) {
         List<Long> prerequisiteIds =
                 coursePrerequisiteRepository.findPrerequisiteCourseIdsByCourseId(courseId);
@@ -216,19 +236,11 @@ public class CourseService {
     }
 
     private CourseResponse mapToResponse(Course course) {
+        CourseResponse response = courseMapper.toResponse(course);
         List<Long> prereqIds = coursePrerequisiteRepository
                 .findPrerequisiteCourseIdsByCourseId(course.getId());
-
-        return CourseResponse.builder()
-                .id(course.getId())
-                .title(course.getTitle())
-                .description(course.getDescription())
-                .status(course.getStatus())
-                .passingScore(course.getPassingScore())
-                .createdAt(course.getCreatedAt())
-                .updatedAt(course.getUpdatedAt())
-                .prerequisiteCourseIds(prereqIds)
-                .build();
+        response.setPrerequisiteCourseIds(prereqIds);
+        return response;
     }
 
     private CourseAssignmentResponse mapAssignmentToResponse(CourseDepartmentAssignment a) {

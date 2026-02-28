@@ -29,4 +29,18 @@ public interface EmployeeQCMAttemptRepository extends JpaRepository<EmployeeQCMA
     Integer findMaxAttemptNumber(
             @Param("employeeId") Long employeeId,
             @Param("sectionId") Long sectionId);
+
+    @Query("""
+            SELECT COUNT(a) FROM EmployeeQCMAttempt a
+            WHERE a.section.id = :sectionId
+            """)
+    long countBySectionId(@Param("sectionId") Long sectionId);
+
+    @Query("""
+            SELECT COUNT(a) FROM EmployeeQCMAttempt a
+            WHERE a.section.id = :sectionId AND a.score < :passingScore
+            """)
+    long countFailedBySectionId(
+            @Param("sectionId") Long sectionId,
+            @Param("passingScore") int passingScore);
 }

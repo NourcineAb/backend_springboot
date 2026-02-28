@@ -31,11 +31,12 @@ public class EmployeeCourseGrade {
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    @Column(nullable = false)
+    @Column(name = "final_score", nullable = false)
     private Integer finalScore;
 
     @Column(nullable = false)
     private boolean passed;
 
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }

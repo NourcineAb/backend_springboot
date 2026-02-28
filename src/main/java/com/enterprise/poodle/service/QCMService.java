@@ -8,6 +8,7 @@ import com.enterprise.poodle.entity.*;
 import com.enterprise.poodle.enums.*;
 import com.enterprise.poodle.exception.BusinessException;
 import com.enterprise.poodle.exception.ResourceNotFoundException;
+import com.enterprise.poodle.mapper.QCMQuestionMapper;
 import com.enterprise.poodle.repository.*;
 import com.enterprise.poodle.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,7 @@ public class QCMService {
     private final SecurityUtils securityUtils;
     private final AuditLogService auditLogService;
     private final CertificateService certificateService;
+    private final QCMQuestionMapper qcmQuestionMapper;
 
     @Transactional
     public QCMQuestionResponse createQuestion(Long sectionId, QCMQuestionRequest request) {
@@ -184,15 +186,8 @@ public class QCMService {
     }
 
     private QCMQuestionResponse mapToResponse(QCMQuestion question, boolean includeCorrect) {
-        return QCMQuestionResponse.builder()
-                .id(question.getId())
-                .questionText(question.getQuestionText())
-                .optionA(question.getOptionA())
-                .optionB(question.getOptionB())
-                .optionC(question.getOptionC())
-                .optionD(question.getOptionD())
-                .correctOption(includeCorrect ? question.getCorrectOption() : null)
-                .llmGenerated(question.isLlmGenerated())
-                .build();
+        return includeCorrect
+                ? qcmQuestionMapper.toResponseWithAnswer(question)
+                : qcmQuestionMapper.toResponse(question);
     }
 }

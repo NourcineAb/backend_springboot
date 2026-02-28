@@ -22,25 +22,25 @@ public class QCMQuestion {
     @JoinColumn(name = "section_id", nullable = false)
     private CourseSection section;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(name = "question_text", nullable = false, columnDefinition = "TEXT")
     private String questionText;
 
-    @Column(nullable = false)
+    @Column(name = "option_a", nullable = false)
     private String optionA;
 
-    @Column(nullable = false)
+    @Column(name = "option_b", nullable = false)
     private String optionB;
 
-    @Column(nullable = false)
+    @Column(name = "option_c", nullable = false)
     private String optionC;
 
-    @Column(nullable = false)
+    @Column(name = "option_d", nullable = false)
     private String optionD;
 
-    @Column(nullable = false)
+    @Column(name = "correct_option", nullable = false)
     private String correctOption;
 
-    @Column(nullable = false)
+    @Column(name = "llm_generated", nullable = false)
     @Builder.Default
     private boolean llmGenerated = false;
 }

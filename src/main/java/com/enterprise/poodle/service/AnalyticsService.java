@@ -154,20 +154,25 @@ public class AnalyticsService {
             return List.of();
         }
 
-        // Get all questions for these sections and compute fail rates
-        // In production, this would be an optimized query
+        // Get all questions for these sections and compute fail rates per section
         return qcmSectionIds.stream()
-                .flatMap(sId -> questionRepository.findBySectionId(sId).stream())
-                .map(q -> {
-                    // Note: In production, this would be done with a single optimized query
-                    // For now, returning placeholder analytics
-                    return AnalyticsResponse.MostFailedQuestion.builder()
-                            .questionId(q.getId())
-                            .questionText(q.getQuestionText())
-                            .totalAttempts(0)
-                            .incorrectCount(0)
-                            .failRate(0.0)
-                            .build();
+                .flatMap(sId -> {
+                    CourseSection sec = sectionRepository.findById(sId).orElse(null);
+                    int passingScore = sec != null && sec.getCourse() != null
+                            ? sec.getCourse().getPassingScore() : 70;
+                    long totalAttempts = attemptRepository.countBySectionId(sId);
+                    long failedAttempts = attemptRepository.countFailedBySectionId(sId, passingScore);
+                    double failRate = totalAttempts > 0
+                            ? (double) failedAttempts / totalAttempts * 100 : 0;
+
+                    return questionRepository.findBySectionId(sId).stream()
+                            .map(q -> AnalyticsResponse.MostFailedQuestion.builder()
+                                    .questionId(q.getId())
+                                    .questionText(q.getQuestionText())
+                                    .totalAttempts(totalAttempts)
+                                    .incorrectCount(failedAttempts)
+                                    .failRate(Math.round(failRate * 100.0) / 100.0)
+                                    .build());
                 })
                 .sorted((a, b) -> Double.compare(b.getFailRate(), a.getFailRate()))
                 .limit(10)

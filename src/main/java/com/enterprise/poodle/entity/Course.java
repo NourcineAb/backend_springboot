@@ -37,15 +37,16 @@ public class Course {
     @Builder.Default
     private CourseStatus status = CourseStatus.DRAFT;
 
-    @Column(nullable = false)
+    @Column(name = "passing_score", nullable = false)
     @Builder.Default
     private Integer passingScore = 70;
 
     @CreationTimestamp
-    @Column(updatable = false)
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)

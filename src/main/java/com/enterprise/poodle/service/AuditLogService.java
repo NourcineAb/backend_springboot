@@ -1,5 +1,6 @@
 package com.enterprise.poodle.service;
 
+import com.enterprise.poodle.dto.response.AuditLogResponse;
 import com.enterprise.poodle.entity.AuditLog;
 import com.enterprise.poodle.enums.ActionType;
 import com.enterprise.poodle.repository.AuditLogRepository;
@@ -8,7 +9,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,5 +62,36 @@ public class AuditLogService {
         } catch (JsonProcessingException e) {
             log.error("Failed to serialize audit log values: {}", e.getMessage());
         }
+    }
+
+    @Transactional(readOnly = true)
+    public Page<AuditLogResponse> getAllLogs(Pageable pageable) {
+        return auditLogRepository.findAllByOrderByTimestampDesc(pageable)
+                .map(this::mapToResponse);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<AuditLogResponse> getLogsByEntity(String entityType, Long entityId, Pageable pageable) {
+        return auditLogRepository.findByEntityTypeAndEntityId(entityType, entityId, pageable)
+                .map(this::mapToResponse);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<AuditLogResponse> getLogsByUser(Long userId, Pageable pageable) {
+        return auditLogRepository.findByUserId(userId, pageable)
+                .map(this::mapToResponse);
+    }
+
+    private AuditLogResponse mapToResponse(AuditLog log) {
+        return AuditLogResponse.builder()
+                .id(log.getId())
+                .userId(log.getUserId())
+                .actionType(log.getActionType())
+                .entityType(log.getEntityType())
+                .entityId(log.getEntityId())
+                .oldValue(log.getOldValue())
+                .newValue(log.getNewValue())
+                .timestamp(log.getTimestamp())
+                .build();
     }
 }

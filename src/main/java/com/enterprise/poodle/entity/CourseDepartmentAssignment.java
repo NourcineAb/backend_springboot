@@ -32,5 +32,6 @@ public class CourseDepartmentAssignment {
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
+    @Column(name = "deadline_date")
     private LocalDate deadlineDate;
 }

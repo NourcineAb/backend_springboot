@@ -24,26 +24,26 @@ public class AuditLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "action_type", nullable = false)
     private ActionType actionType;
 
-    @Column(nullable = false)
+    @Column(name = "entity_type", nullable = false)
     private String entityType;
 
-    @Column(nullable = false)
+    @Column(name = "entity_id", nullable = false)
     private Long entityId;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime timestamp;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "old_value", columnDefinition = "TEXT")
     private String oldValue;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "new_value", columnDefinition = "TEXT")
     private String newValue;
 }

@@ -8,6 +8,8 @@ import com.enterprise.poodle.exception.BusinessException;
 import com.enterprise.poodle.exception.ResourceNotFoundException;
 import com.enterprise.poodle.repository.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,10 +40,9 @@ public class DepartmentService {
     }
 
     @Transactional(readOnly = true)
-    public List<DepartmentResponse> getAllDepartments() {
-        return departmentRepository.findAllByDeletedFalse().stream()
-                .map(this::mapToResponse)
-                .collect(Collectors.toList());
+    public Page<DepartmentResponse> getAllDepartments(Pageable pageable) {
+        return departmentRepository.findAllByDeletedFalse(pageable)
+                .map(this::mapToResponse);
     }
 
     @Transactional(readOnly = true)

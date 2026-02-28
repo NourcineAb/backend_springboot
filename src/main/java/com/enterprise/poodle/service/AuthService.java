@@ -8,6 +8,7 @@ import com.enterprise.poodle.entity.Department;
 import com.enterprise.poodle.entity.Employee;
 import com.enterprise.poodle.exception.DuplicateResourceException;
 import com.enterprise.poodle.exception.ResourceNotFoundException;
+import com.enterprise.poodle.mapper.EmployeeMapper;
 import com.enterprise.poodle.repository.DepartmentRepository;
 import com.enterprise.poodle.repository.EmployeeRepository;
 import com.enterprise.poodle.security.JwtTokenProvider;
@@ -28,6 +29,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
+    private final EmployeeMapper employeeMapper;
 
     public AuthResponse login(LoginRequest request) {
         Authentication authentication = authenticationManager.authenticate(
@@ -68,18 +70,6 @@ public class AuthService {
         }
 
         Employee saved = employeeRepository.save(employee);
-        return mapToResponse(saved);
-    }
-
-    private EmployeeResponse mapToResponse(Employee employee) {
-        return EmployeeResponse.builder()
-                .id(employee.getId())
-                .firstName(employee.getFirstName())
-                .lastName(employee.getLastName())
-                .email(employee.getEmail())
-                .role(employee.getRole())
-                .departmentId(employee.getDepartment() != null ? employee.getDepartment().getId() : null)
-                .departmentName(employee.getDepartment() != null ? employee.getDepartment().getName() : null)
-                .build();
+        return employeeMapper.toResponse(saved);
     }
 }

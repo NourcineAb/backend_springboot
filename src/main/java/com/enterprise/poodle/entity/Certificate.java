@@ -35,9 +35,10 @@ public class Certificate {
     @Builder.Default
     private String certificateCode = UUID.randomUUID().toString();
 
+    @Column(name = "qr_code_url")
     private String qrCodeUrl;
 
-    @Column(nullable = false)
+    @Column(name = "issued_at", nullable = false)
     private LocalDateTime issuedAt;
 
     @Column(nullable = false)

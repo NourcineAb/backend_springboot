@@ -79,4 +79,13 @@ public class CourseController {
             @PathVariable Long courseId) {
         return ResponseEntity.ok(courseService.getAssignedDepartments(courseId));
     }
+
+    @DeleteMapping("/{courseId}/assign/{departmentId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> unassignCourseFromDepartment(
+            @PathVariable Long courseId,
+            @PathVariable Long departmentId) {
+        courseService.unassignCourseFromDepartment(courseId, departmentId);
+        return ResponseEntity.noContent().build();
+    }
 }

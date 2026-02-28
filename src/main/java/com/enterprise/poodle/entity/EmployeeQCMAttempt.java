@@ -29,12 +29,12 @@ public class EmployeeQCMAttempt {
     @JoinColumn(name = "section_id", nullable = false)
     private CourseSection section;
 
-    @Column(nullable = false)
+    @Column(name = "attempt_number", nullable = false)
     private Integer attemptNumber;
 
     @Column(nullable = false)
     private Integer score;
 
-    @Column(nullable = false)
+    @Column(name = "taken_at", nullable = false)
     private LocalDateTime takenAt;
 }

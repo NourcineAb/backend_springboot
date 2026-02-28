@@ -32,22 +32,24 @@ public class CourseSection {
     private String title;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "content_type", nullable = false)
     private ContentType contentType;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "content_url", columnDefinition = "TEXT")
     private String contentUrl;
 
-    @Column(nullable = false)
+    @Column(name = "order_index", nullable = false)
     @Builder.Default
     private Integer orderIndex = 0;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "qcm_type")
     private QcmType qcmType;
 
+    @Column(name = "max_attempts")
     private Integer maxAttempts;
 
-    @Column(nullable = false)
+    @Column(name = "llm_draft_enabled", nullable = false)
     @Builder.Default
     private boolean llmDraftEnabled = false;
 
