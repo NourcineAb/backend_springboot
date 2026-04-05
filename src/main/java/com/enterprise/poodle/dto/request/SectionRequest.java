@@ -17,6 +17,9 @@ public class SectionRequest {
 
     private String contentUrl;
 
+    @Size(max = 2000, message = "File description must not exceed 2000 characters")
+    private String fileDescription;
+
     @Min(value = 0, message = "Order index must be non-negative")
     private Integer orderIndex;
 

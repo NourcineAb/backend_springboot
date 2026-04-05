@@ -155,7 +155,7 @@ class AuthControllerTest extends BaseIntegrationTest {
         }
 
         @Test
-        @DisplayName("Should return 401 without token")
+        @DisplayName("Should return 403 without token")
         void registerUnauthorized() throws Exception {
             RegisterRequest request = new RegisterRequest();
             request.setFirstName("No");
@@ -167,7 +167,7 @@ class AuthControllerTest extends BaseIntegrationTest {
             mockMvc.perform(post("/api/auth/register")
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(asJson(request)))
-                    .andExpect(status().isUnauthorized());
+                    .andExpect(status().isForbidden());
         }
 
         @Test

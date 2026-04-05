@@ -28,4 +28,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     @Query("SELECT e FROM Employee e WHERE e.department.id IN :departmentIds AND e.deleted = false")
     List<Employee> findByDepartmentIdIn(@Param("departmentIds") List<Long> departmentIds);
+
+    @Query("SELECT e FROM Employee e WHERE e.department.id = :departmentId AND e.deleted = false")
+    Page<Employee> findByDepartmentIdAndDeletedFalse(@Param("departmentId") Long departmentId, Pageable pageable);
 }

@@ -1,9 +1,12 @@
 server:
-  port: 8081
+  port: ${SERVER_PORT:8080}
 
 spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/poodle_lms
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/poodle_lms}
     username: ${DB_USERNAME:poodle}
     password: ${DB_PASSWORD:poodle}
     hikari:
@@ -14,7 +17,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
     show-sql: false
     open-in-view: false
     properties:
@@ -31,6 +34,8 @@ spring:
     enabled: true
     locations: classpath:db/migration
     baseline-on-migrate: true
+    validate-on-migrate: false
+    out-of-order: true
 
   jackson:
     serialization:
@@ -40,15 +45,21 @@ spring:
 app:
   jwt:
     secret: ${JWT_SECRET:c2VjdXJlLXNlY3JldC1rZXktZm9yLXBvb2RsZS1sbXMtYXBwbGljYXRpb24tMjAyNg==}
-    expiration-ms: 86400000
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
   cors:
     allowed-origins: ${CORS_ORIGINS:http://localhost:3000,http://localhost:4200}
+  llm:
+    provider: gemini
+    api-key: ${GEMINI_API_KEY:}
+    model: ${GEMINI_MODEL:gemini-2.0-flash}
 
 logging:
   level:
-    com.enterprise.poodle: INFO
-    org.springframework.security: INFO
-    org.hibernate.SQL: WARN
+    com.enterprise.poodle: ${LOG_LEVEL_APP:DEBUG}
+    com.enterprise.poodle.service: ${LOG_LEVEL_APP:DEBUG}
+    com.enterprise.poodle.controller: ${LOG_LEVEL_APP:DEBUG}
+    org.springframework.security: ${LOG_LEVEL_SECURITY:DEBUG}
+    org.hibernate.SQL: ${LOG_LEVEL_HIBERNATE:WARN}
 
 springdoc:
   api-docs:

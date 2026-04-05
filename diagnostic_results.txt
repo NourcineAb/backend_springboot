@@ -1,0 +1,806 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.enterprise:poodle >------------------------
+[INFO] Building Poodle LMS 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ poodle ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ poodle ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 109 source files with javac [debug parameters release 21] to target\classes
+[INFO] /C:/Learning/IIT/2nd Year/2nd Semester/Projects/JEE-Angular/backend_springboot/src/main/java/com/enterprise/poodle/service/LLMService.java: C:\Learning\IIT\2nd Year\2nd Semester\Projects\JEE-Angular\backend_springboot\src\main\java\com\enterprise\poodle\service\LLMService.java uses unchecked or unsafe operations.
+[INFO] /C:/Learning/IIT/2nd Year/2nd Semester/Projects/JEE-Angular/backend_springboot/src/main/java/com/enterprise/poodle/service/LLMService.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ poodle ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ poodle ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 14 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.2:test (default-test) @ poodle ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.enterprise.poodle.security.SecurityDiagnosticTest
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+23:55:26.154 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.enterprise.poodle.security.SecurityDiagnosticTest]: SecurityDiagnosticTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:55:26.867 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.enterprise.poodle.PoodleApplication for test class com.enterprise.poodle.security.SecurityDiagnosticTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.3)
+
+2026-03-23T23:55:35.643+01:00  INFO 2068 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-23T23:55:36.348+01:00  INFO 2068 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 650 ms. Found 14 JPA repository interfaces.
+2026-03-23T23:55:39.119+01:00  INFO 2068 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-23T23:55:39.520+01:00  INFO 2068 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2026-03-23T23:55:39.715+01:00  INFO 2068 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-23T23:55:41.264+01:00  INFO 2068 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-23T23:55:41.398+01:00  INFO 2068 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-23T23:55:42.066+01:00  INFO 2068 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:poodle_test user=SA
+2026-03-23T23:55:42.072+01:00  INFO 2068 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-23T23:55:42.182+01:00  WARN 2068 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-23T23:55:42.272+01:00  INFO 2068 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-23T23:55:47.904+01:00  INFO 2068 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-23T23:55:48.362+01:00  INFO 2068 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-23T23:55:50.009+01:00  INFO 2068 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-23T23:56:00.662+01:00  INFO 2068 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-03-23T23:56:00.664+01:00  INFO 2068 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-03-23T23:56:00.668+01:00  INFO 2068 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Dev\Outils\Maven\depot_local\net\bytebuddy\byte-buddy-agent\1.15.11\byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-03-23T23:56:06.211+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: admin@test.com
+2026-03-23T23:56:06.215+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: admin@test.com
+2026-03-23T23:56:07.492+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:07.727+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:07.727+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: Admin User, Role: ROLE_ADMIN
+2026-03-23T23:56:07.728+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: admin@test.com, Role: ROLE_ADMIN
+2026-03-23T23:56:07.731+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU2NywiZXhwIjoxNzc0MzEwMTY3fQ.kIcLMrW-aZkgSn3QliU-PB-WcCrMXKv42grQLqzJLZIZIjVTJpqMSUTNqwV3wGTM_abecPDxCEYdeNojA0iO2A, email=admin@test.com, role=ROLE_ADMIN, firstName=Admin, lastName=User)
+2026-03-23T23:56:07.733+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: admin@test.com, Role: ROLE_ADMIN
+2026-03-23T23:56:07.807+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: employee@test.com
+2026-03-23T23:56:07.807+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: employee@test.com
+2026-03-23T23:56:08.408+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:08.410+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:08.411+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: John Doe, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:08.411+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:08.411+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU2OCwiZXhwIjoxNzc0MzEwMTY4fQ.E88g_zyVqwFcVQAJcQ9FqhQQNaw9O4MwoeJTpKI-_gpwp37BCcc04rU66ep8noVinH7oTxj7rUxWiaMxoESGCw, email=employee@test.com, role=ROLE_EMPLOYEE, firstName=John, lastName=Doe)
+2026-03-23T23:56:08.411+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: employee@test.com, Role: ROLE_EMPLOYEE
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"49"]
+             Body = {"email":"admin@test.com","password":"Admin@123"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.enterprise.poodle.controller.AuthController
+           Method = com.enterprise.poodle.controller.AuthController#login(LoginRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"SAMEORIGIN"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU2NywiZXhwIjoxNzc0MzEwMTY3fQ.kIcLMrW-aZkgSn3QliU-PB-WcCrMXKv42grQLqzJLZIZIjVTJpqMSUTNqwV3wGTM_abecPDxCEYdeNojA0iO2A","email":"admin@test.com","role":"ROLE_ADMIN","firstName":"Admin","lastName":"User"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"55"]
+             Body = {"email":"employee@test.com","password":"Employee@123"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.enterprise.poodle.controller.AuthController
+           Method = com.enterprise.poodle.controller.AuthController#login(LoginRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"SAMEORIGIN"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU2OCwiZXhwIjoxNzc0MzEwMTY4fQ.E88g_zyVqwFcVQAJcQ9FqhQQNaw9O4MwoeJTpKI-_gpwp37BCcc04rU66ep8noVinH7oTxj7rUxWiaMxoESGCw","email":"employee@test.com","role":"ROLE_EMPLOYEE","firstName":"John","lastName":"Doe"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-03-23T23:56:10.504+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: admin@test.com
+2026-03-23T23:56:10.506+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: admin@test.com
+2026-03-23T23:56:11.065+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:11.067+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:11.067+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: Admin User, Role: ROLE_ADMIN
+2026-03-23T23:56:11.067+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: admin@test.com, Role: ROLE_ADMIN
+2026-03-23T23:56:11.067+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3MSwiZXhwIjoxNzc0MzEwMTcxfQ.QFIpb3T7iSuuwd0ieDjWB-TDLdbbzGJ6J_JwqDTZMwDeq-YsNdNaq6-r_LgC6DfzhKhGZbu8kA-p11pUQApFFg, email=admin@test.com, role=ROLE_ADMIN, firstName=Admin, lastName=User)
+2026-03-23T23:56:11.069+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: admin@test.com, Role: ROLE_ADMIN
+2026-03-23T23:56:11.083+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: employee@test.com
+2026-03-23T23:56:11.084+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: employee@test.com
+2026-03-23T23:56:11.607+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:11.610+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:11.611+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: John Doe, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:11.611+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:11.611+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3MSwiZXhwIjoxNzc0MzEwMTcxfQ.r6SnTRd07z3d7MJhL2suIQJX5el5vNPwca2OL3hsrPOs9LaBm1CZk0MRtH7pZEkG3TRPa3WE0zL1ZMimEgX5rQ, email=employee@test.com, role=ROLE_EMPLOYEE, firstName=John, lastName=Doe)
+2026-03-23T23:56:11.611+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:11.619+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: employee@test.com
+2026-03-23T23:56:11.619+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: employee@test.com
+2026-03-23T23:56:12.094+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:12.096+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:12.096+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: John Doe, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:12.098+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:12.100+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3MiwiZXhwIjoxNzc0MzEwMTcyfQ.dxPNyfM4akG-JuTyKce7swgRAvvW8ZhuBmBCc2h69hejrixT5Hbigl2DONVV75rke3efr9X9JpQ3Er9pUVbjqA, email=employee@test.com, role=ROLE_EMPLOYEE, firstName=John, lastName=Doe)
+2026-03-23T23:56:12.101+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:12.267+01:00 ERROR 2068 --- [           main] c.e.p.exception.GlobalExceptionHandler   : Unhandled exception at /api/employees/me: Could not initialize proxy [com.enterprise.poodle.entity.Department#6] - no session
+
+org.hibernate.LazyInitializationException: Could not initialize proxy [com.enterprise.poodle.entity.Department#6] - no session
+	at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:174) ~[hibernate-core-6.6.8.Final.jar:6.6.8.Final]
+	at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:328) ~[hibernate-core-6.6.8.Final.jar:6.6.8.Final]
+	at org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor.intercept(ByteBuddyInterceptor.java:44) ~[hibernate-core-6.6.8.Final.jar:6.6.8.Final]
+	at org.hibernate.proxy.ProxyConfiguration$InterceptorDispatcher.intercept(ProxyConfiguration.java:102) ~[hibernate-core-6.6.8.Final.jar:6.6.8.Final]
+	at com.enterprise.poodle.entity.Department$HibernateProxy$L6H2pinB.getName(Unknown Source) ~[classes/:na]
+	at com.enterprise.poodle.mapper.EmployeeMapperImpl.employeeDepartmentName(EmployeeMapperImpl.java:49) ~[classes/:na]
+	at com.enterprise.poodle.mapper.EmployeeMapperImpl.toResponse(EmployeeMapperImpl.java:26) ~[classes/:na]
+	at com.enterprise.poodle.service.EmployeeService.mapToResponse(EmployeeService.java:170) ~[classes/:na]
+	at com.enterprise.poodle.service.EmployeeService.getCurrentProfile(EmployeeService.java:72) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.3.jar:6.2.3]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727) ~[spring-aop-6.2.3.jar:6.2.3]
+	at com.enterprise.poodle.service.EmployeeService$$SpringCGLIB$$0.getCurrentProfile(<generated>) ~[classes/:na]
+	at com.enterprise.poodle.controller.EmployeeController.getMyProfile(EmployeeController.java:29) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:723) ~[spring-aop-6.2.3.jar:6.2.3]
+	at com.enterprise.poodle.controller.EmployeeController$$SpringCGLIB$$0.getMyProfile(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.36.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72) ~[spring-test-6.2.3.jar:6.2.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.36.jar:6.0]
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at com.enterprise.poodle.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:54) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.4.3.jar:6.4.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238) ~[spring-security-config-6.4.3.jar:6.4.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.test.web.servlet.setup.MockMvcFilterDecorator.doFilter(MockMvcFilterDecorator.java:162) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.2.3.jar:6.2.3]
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201) ~[spring-test-6.2.3.jar:6.2.3]
+	at com.enterprise.poodle.security.SecurityDiagnosticTest.testSecurityUtilsUserResolution(SecurityDiagnosticTest.java:81) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:767) ~[junit-platform-commons-1.11.4.jar:1.11.4]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$8(TestMethodTestDescriptor.java:217) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56) ~[surefire-junit-platform-3.5.2.jar:3.5.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184) ~[surefire-junit-platform-3.5.2.jar:3.5.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148) ~[surefire-junit-platform-3.5.2.jar:3.5.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122) ~[surefire-junit-platform-3.5.2.jar:3.5.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.5.2.jar:3.5.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.5.2.jar:3.5.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.5.2.jar:3.5.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.5.2.jar:3.5.2]
+
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"49"]
+             Body = {"email":"admin@test.com","password":"Admin@123"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.enterprise.poodle.controller.AuthController
+           Method = com.enterprise.poodle.controller.AuthController#login(LoginRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"SAMEORIGIN"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3MSwiZXhwIjoxNzc0MzEwMTcxfQ.QFIpb3T7iSuuwd0ieDjWB-TDLdbbzGJ6J_JwqDTZMwDeq-YsNdNaq6-r_LgC6DfzhKhGZbu8kA-p11pUQApFFg","email":"admin@test.com","role":"ROLE_ADMIN","firstName":"Admin","lastName":"User"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"55"]
+             Body = {"email":"employee@test.com","password":"Employee@123"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.enterprise.poodle.controller.AuthController
+           Method = com.enterprise.poodle.controller.AuthController#login(LoginRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"SAMEORIGIN"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3MSwiZXhwIjoxNzc0MzEwMTcxfQ.r6SnTRd07z3d7MJhL2suIQJX5el5vNPwca2OL3hsrPOs9LaBm1CZk0MRtH7pZEkG3TRPa3WE0zL1ZMimEgX5rQ","email":"employee@test.com","role":"ROLE_EMPLOYEE","firstName":"John","lastName":"Doe"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"55"]
+             Body = {"email":"employee@test.com","password":"Employee@123"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.enterprise.poodle.controller.AuthController
+           Method = com.enterprise.poodle.controller.AuthController#login(LoginRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"SAMEORIGIN"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3MiwiZXhwIjoxNzc0MzEwMTcyfQ.dxPNyfM4akG-JuTyKce7swgRAvvW8ZhuBmBCc2h69hejrixT5Hbigl2DONVV75rke3efr9X9JpQ3Er9pUVbjqA","email":"employee@test.com","role":"ROLE_EMPLOYEE","firstName":"John","lastName":"Doe"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/employees/me
+       Parameters = {}
+          Headers = [Authorization:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3MiwiZXhwIjoxNzc0MzEwMTcyfQ.dxPNyfM4akG-JuTyKce7swgRAvvW8ZhuBmBCc2h69hejrixT5Hbigl2DONVV75rke3efr9X9JpQ3Er9pUVbjqA"]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.enterprise.poodle.controller.EmployeeController
+           Method = com.enterprise.poodle.controller.EmployeeController#getMyProfile()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.hibernate.LazyInitializationException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 500
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"SAMEORIGIN"]
+     Content type = application/json
+             Body = {"status":500,"message":"An unexpected error occurred","path":"/api/employees/me","timestamp":"2026-03-23T23:56:12.285368"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-03-23T23:56:14.116+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: admin@test.com
+2026-03-23T23:56:14.116+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: admin@test.com
+2026-03-23T23:56:14.584+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:14.585+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:14.585+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: Admin User, Role: ROLE_ADMIN
+2026-03-23T23:56:14.585+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: admin@test.com, Role: ROLE_ADMIN
+2026-03-23T23:56:14.586+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3NCwiZXhwIjoxNzc0MzEwMTc0fQ.JWBXAC51qVD_CCmkyUAUYhVHwjg5VPkfBvfCaNWfmvJ5CVvE0hWoCxqacEe1-YQwxAzHyt6_GBmFBwBOfO5ZKg, email=admin@test.com, role=ROLE_ADMIN, firstName=Admin, lastName=User)
+2026-03-23T23:56:14.586+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: admin@test.com, Role: ROLE_ADMIN
+2026-03-23T23:56:14.594+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: employee@test.com
+2026-03-23T23:56:14.594+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: employee@test.com
+2026-03-23T23:56:15.041+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:15.043+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:15.043+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: John Doe, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:15.043+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:15.043+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3NSwiZXhwIjoxNzc0MzEwMTc1fQ.piywdXK1g5QEpzkLu4kRrAIXXUKiy7-yyJ9vGYz6wHWtFVNYZ09AadE54LU-eSV7W21JUQn3_7ZRO2z7_obvXg, email=employee@test.com, role=ROLE_EMPLOYEE, firstName=John, lastName=Doe)
+2026-03-23T23:56:15.043+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: employee@test.com, Role: ROLE_EMPLOYEE
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"49"]
+             Body = {"email":"admin@test.com","password":"Admin@123"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.enterprise.poodle.controller.AuthController
+           Method = com.enterprise.poodle.controller.AuthController#login(LoginRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"SAMEORIGIN"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3NCwiZXhwIjoxNzc0MzEwMTc0fQ.JWBXAC51qVD_CCmkyUAUYhVHwjg5VPkfBvfCaNWfmvJ5CVvE0hWoCxqacEe1-YQwxAzHyt6_GBmFBwBOfO5ZKg","email":"admin@test.com","role":"ROLE_ADMIN","firstName":"Admin","lastName":"User"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"55"]
+             Body = {"email":"employee@test.com","password":"Employee@123"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.enterprise.poodle.controller.AuthController
+           Method = com.enterprise.poodle.controller.AuthController#login(LoginRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"SAMEORIGIN"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3NSwiZXhwIjoxNzc0MzEwMTc1fQ.piywdXK1g5QEpzkLu4kRrAIXXUKiy7-yyJ9vGYz6wHWtFVNYZ09AadE54LU-eSV7W21JUQn3_7ZRO2z7_obvXg","email":"employee@test.com","role":"ROLE_EMPLOYEE","firstName":"John","lastName":"Doe"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-03-23T23:56:16.649+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: admin@test.com
+2026-03-23T23:56:16.650+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: admin@test.com
+2026-03-23T23:56:17.133+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:17.134+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:17.134+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: Admin User, Role: ROLE_ADMIN
+2026-03-23T23:56:17.135+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: admin@test.com, Role: ROLE_ADMIN
+2026-03-23T23:56:17.135+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3NywiZXhwIjoxNzc0MzEwMTc3fQ.WzkslkUYLXi2FMNk4vPlz7IZY-tuDJYzUcSPz_uisriro4AqWGoleXPYP4H6-3vVcVwheyyruuN3SHYjZsU0Ig, email=admin@test.com, role=ROLE_ADMIN, firstName=Admin, lastName=User)
+2026-03-23T23:56:17.136+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: admin@test.com, Role: ROLE_ADMIN
+2026-03-23T23:56:17.142+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: employee@test.com
+2026-03-23T23:56:17.142+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: employee@test.com
+2026-03-23T23:56:17.608+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:17.610+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:17.610+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: John Doe, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:17.611+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:17.611+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3NywiZXhwIjoxNzc0MzEwMTc3fQ.M4y9_BmnL9u2UtIjgAZ-7ne1ZW0QaW7Yi4A05QEbMs0Xq4ks22l6EI5Q7dh0P9647uzIA06iSSC714eRy0ZtAA, email=employee@test.com, role=ROLE_EMPLOYEE, firstName=John, lastName=Doe)
+2026-03-23T23:56:17.611+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:17.617+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: employee@test.com
+2026-03-23T23:56:17.618+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: employee@test.com
+2026-03-23T23:56:18.120+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:18.124+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:18.125+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: John Doe, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:18.125+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:18.125+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU3OCwiZXhwIjoxNzc0MzEwMTc4fQ.D8xp5QIkNmDv-KzEe38dYBfI-uzq5t8yAMtKfzdcgrNKX85S17UZLB1zt6LNFOHTCukH9kbCnlhTabgAQDpiuA, email=employee@test.com, role=ROLE_EMPLOYEE, firstName=John, lastName=Doe)
+2026-03-23T23:56:18.125+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:20.091+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: admin@test.com
+2026-03-23T23:56:20.091+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: admin@test.com
+2026-03-23T23:56:20.582+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:20.583+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:20.584+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: Admin User, Role: ROLE_ADMIN
+2026-03-23T23:56:20.584+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: admin@test.com, Role: ROLE_ADMIN
+2026-03-23T23:56:20.584+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU4MCwiZXhwIjoxNzc0MzEwMTgwfQ.GvM48XDWQ4NrEhXOB2Z_tXCmoI68hT9ug5m5ZXwByDtsbhrriOzp9RCt9PcID46FHi-_-fnblNsWnYq-9v5gtw, email=admin@test.com, role=ROLE_ADMIN, firstName=Admin, lastName=User)
+2026-03-23T23:56:20.584+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: admin@test.com, Role: ROLE_ADMIN
+2026-03-23T23:56:20.592+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login attempt - Email: employee@test.com
+2026-03-23T23:56:20.593+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Starting authentication for: employee@test.com
+2026-03-23T23:56:21.082+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Authentication successful, authenticated: true
+2026-03-23T23:56:21.082+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] JWT token generated
+2026-03-23T23:56:21.082+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Employee loaded - Name: John Doe, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:21.082+01:00  INFO 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] Login processed - Email: employee@test.com, Role: ROLE_EMPLOYEE
+2026-03-23T23:56:21.082+01:00 DEBUG 2068 --- [           main] c.enterprise.poodle.service.AuthService  : ? [SERVICE] AuthResponse built: AuthResponse(token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU4MSwiZXhwIjoxNzc0MzEwMTgxfQ.gqNgJBLZlNTEKi8TS8XXW0AO8oaMbHruPxxFA4eueNGInB1nKe1NVRruLzkMCedFSWsABqDWmKejmJfzHSm18A, email=employee@test.com, role=ROLE_EMPLOYEE, firstName=John, lastName=Doe)
+2026-03-23T23:56:21.082+01:00  INFO 2068 --- [           main] c.e.poodle.controller.AuthController     : ? [AUTH] Login successful - Email: employee@test.com, Role: ROLE_EMPLOYEE
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"49"]
+             Body = {"email":"admin@test.com","password":"Admin@123"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.enterprise.poodle.controller.AuthController
+           Method = com.enterprise.poodle.controller.AuthController#login(LoginRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"SAMEORIGIN"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU4MCwiZXhwIjoxNzc0MzEwMTgwfQ.GvM48XDWQ4NrEhXOB2Z_tXCmoI68hT9ug5m5ZXwByDtsbhrriOzp9RCt9PcID46FHi-_-fnblNsWnYq-9v5gtw","email":"admin@test.com","role":"ROLE_ADMIN","firstName":"Admin","lastName":"User"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/auth/login
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"55"]
+             Body = {"email":"employee@test.com","password":"Employee@123"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.enterprise.poodle.controller.AuthController
+           Method = com.enterprise.poodle.controller.AuthController#login(LoginRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"SAMEORIGIN"]
+     Content type = application/json
+             Body = {"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZUB0ZXN0LmNvbSIsImlhdCI6MTc3NDMwNjU4MSwiZXhwIjoxNzc0MzEwMTgxfQ.gqNgJBLZlNTEKi8TS8XXW0AO8oaMbHruPxxFA4eueNGInB1nKe1NVRruLzkMCedFSWsABqDWmKejmJfzHSm18A","email":"employee@test.com","role":"ROLE_EMPLOYEE","firstName":"John","lastName":"Doe"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 5, Failures: 1, Errors: 3, Skipped: 0, Time elapsed: 56.02 s <<< FAILURE! -- in com.enterprise.poodle.security.SecurityDiagnosticTest
+[ERROR] com.enterprise.poodle.security.SecurityDiagnosticTest.testNotificationSerializationWithoutRecursion -- Time elapsed: 7.642 s <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	NotificationResponse cannot be resolved to a type
+	NotificationResponse cannot be resolved to a type
+
+	at com.enterprise.poodle.security.SecurityDiagnosticTest.testNotificationSerializationWithoutRecursion(SecurityDiagnosticTest.java:113)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.enterprise.poodle.security.SecurityDiagnosticTest.testSecurityUtilsUserResolution -- Time elapsed: 3.804 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<500>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:640)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.enterprise.poodle.security.SecurityDiagnosticTest.testSecurityUtilsUserResolution(SecurityDiagnosticTest.java:83)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.enterprise.poodle.security.SecurityDiagnosticTest.testJwtGenerationAndValidation -- Time elapsed: 2.728 s <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	LoginRequest cannot be resolved to a type
+	LoginRequest cannot be resolved to a type
+
+	at com.enterprise.poodle.security.SecurityDiagnosticTest.testJwtGenerationAndValidation(SecurityDiagnosticTest.java:40)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.enterprise.poodle.security.SecurityDiagnosticTest.comprehensiveApiFlowTest -- Time elapsed: 2.704 s <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	LoginRequest cannot be resolved to a type
+	LoginRequest cannot be resolved to a type
+
+	at com.enterprise.poodle.security.SecurityDiagnosticTest.comprehensiveApiFlowTest(SecurityDiagnosticTest.java:170)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   SecurityDiagnosticTest.testSecurityUtilsUserResolution:83 Status expected:<200> but was:<500>
+[ERROR] Errors: 
+[ERROR]   SecurityDiagnosticTest.comprehensiveApiFlowTest:170  Unresolved compilation problems: 
+	LoginRequest cannot be resolved to a type
+	LoginRequest cannot be resolved to a type
+
+[ERROR]   SecurityDiagnosticTest.testJwtGenerationAndValidation:40  Unresolved compilation problems: 
+	LoginRequest cannot be resolved to a type
+	LoginRequest cannot be resolved to a type
+
+[ERROR]   SecurityDiagnosticTest.testNotificationSerializationWithoutRecursion:113  Unresolved compilation problems: 
+	NotificationResponse cannot be resolved to a type
+	NotificationResponse cannot be resolved to a type
+
+[INFO] 
+[ERROR] Tests run: 5, Failures: 1, Errors: 3, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:58 min
+[INFO] Finished at: 2026-03-23T23:56:21+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project poodle: There are test failures.
+[ERROR] 
+[ERROR] See C:\Learning\IIT\2nd Year\2nd Semester\Projects\JEE-Angular\backend_springboot\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

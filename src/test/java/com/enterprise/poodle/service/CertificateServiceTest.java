@@ -90,11 +90,11 @@ class CertificateServiceTest {
         @Test
         void shouldGenerateCertificate_whenNoneExists() {
             when(certificateRepository.existsByEmployeeIdAndCourseId(1L, 1L)).thenReturn(false);
-            when(certificateRepository.save(any(Certificate.class))).thenReturn(certificate);
+            when(certificateRepository.saveAndFlush(any(Certificate.class))).thenReturn(certificate);
 
             certificateService.generateCertificateIfEligible(employee, course);
 
-            verify(certificateRepository).save(any(Certificate.class));
+            verify(certificateRepository).saveAndFlush(any(Certificate.class));
         }
 
         @Test

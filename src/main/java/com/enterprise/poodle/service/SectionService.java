@@ -46,6 +46,7 @@ public class SectionService {
                 .title(request.getTitle())
                 .contentType(request.getContentType())
                 .contentUrl(request.getContentUrl())
+                .fileDescription(request.getFileDescription())
                 .orderIndex(request.getOrderIndex() != null ? request.getOrderIndex() : 0)
                 .qcmType(request.getContentType() == ContentType.QCM ? request.getQcmType() : null)
                 .maxAttempts(request.getMaxAttempts())
@@ -53,7 +54,24 @@ public class SectionService {
                 .build();
 
         CourseSection saved = sectionRepository.save(section);
-        return mapToResponse(saved);
+        
+        // Build response while still within transaction (course is still accessible)
+        // Accessing lazy-loaded course must happen within @Transactional boundary
+        SectionResponse response = SectionResponse.builder()
+                .id(saved.getId())
+                .courseId(saved.getCourse().getId())
+                .title(saved.getTitle())
+                .contentType(saved.getContentType())
+                .contentUrl(saved.getContentUrl())
+                .fileDescription(saved.getFileDescription())
+                .orderIndex(saved.getOrderIndex())
+                .qcmType(saved.getQcmType())
+                .maxAttempts(saved.getMaxAttempts())
+                .llmDraftEnabled(saved.isLlmDraftEnabled())
+                .questionCount((int) questionRepository.countBySectionId(saved.getId()))
+                .build();
+        
+        return response;
     }
 
     @Transactional(readOnly = true)
@@ -75,22 +93,36 @@ public class SectionService {
                 "title", section.getTitle(),
                 "contentType", section.getContentType());
 
+        // Get courseId early to avoid lazy loading issues
+        Long courseId = section.getCourse().getId();
+
         // Validate FINAL QCM uniqueness when changing type
         if (request.getContentType() == ContentType.QCM
                 && request.getQcmType() == QcmType.FINAL
                 && section.getQcmType() != QcmType.FINAL) {
-            if (sectionRepository.existsByCourseIdAndQcmType(
-                    section.getCourse().getId(), QcmType.FINAL)) {
+            if (sectionRepository.existsByCourseIdAndQcmType(courseId, QcmType.FINAL)) {
                 throw new BusinessException("Course already has a FINAL QCM section");
             }
         }
 
         if (request.getTitle() != null) section.setTitle(request.getTitle());
         if (request.getContentType() != null) section.setContentType(request.getContentType());
-        if (request.getContentUrl() != null) section.setContentUrl(request.getContentUrl());
+        if (request.getFileDescription() != null) section.setFileDescription(request.getFileDescription());
+        // Handle contentUrl - allow clearing it by setting to null
+        if (request.getContentUrl() != null) {
+            section.setContentUrl(request.getContentUrl());
+        } else if (request.getContentType() != null && 
+                   (request.getContentType() == ContentType.QCM || 
+                    request.getContentType() == ContentType.TEXT)) {
+            // For QCM and TEXT types, contentUrl can be null
+            // Keep existing value or allow clearing
+        }
         if (request.getOrderIndex() != null) section.setOrderIndex(request.getOrderIndex());
         if (request.getContentType() == ContentType.QCM) {
             section.setQcmType(request.getQcmType());
+        } else {
+            // Clear QCM type if not a QCM section
+            section.setQcmType(null);
         }
         if (request.getMaxAttempts() != null) section.setMaxAttempts(request.getMaxAttempts());
         if (request.getLlmDraftEnabled() != null) section.setLlmDraftEnabled(request.getLlmDraftEnabled());
@@ -110,6 +142,37 @@ public class SectionService {
         sectionRepository.delete(section);
     }
 
+    @Transactional
+    public SectionResponse deleteSectionAndReturnInfo(Long sectionId) {
+        CourseSection section = sectionRepository.findById(sectionId)
+                .orElseThrow(() -> new ResourceNotFoundException("Section", "id", sectionId));
+        
+        // Create response before deletion (while still within transaction)
+        // Accessing lazy-loaded course must happen within @Transactional boundary
+        SectionResponse response = SectionResponse.builder()
+                .id(section.getId())
+                .courseId(section.getCourse().getId())
+                .title(section.getTitle())
+                .contentType(section.getContentType())
+                .contentUrl(section.getContentUrl())
+                .orderIndex(section.getOrderIndex())
+                .qcmType(section.getQcmType())
+                .maxAttempts(section.getMaxAttempts())
+                .llmDraftEnabled(section.isLlmDraftEnabled())
+                .questionCount((int) questionRepository.countBySectionId(section.getId()))
+                .build();
+        
+        // Delete the section
+        sectionRepository.delete(section);
+        
+        // Log the deletion
+        auditLogService.logAction(ActionType.DELETE, "Section", sectionId,
+                Map.of("title", section.getTitle(), "contentUrl", section.getContentUrl() != null ? section.getContentUrl() : "N/A"),
+                Map.of());
+        
+        return response;
+    }
+
     private SectionResponse mapToResponse(CourseSection section) {
         return SectionResponse.builder()
                 .id(section.getId())
@@ -117,6 +180,7 @@ public class SectionService {
                 .title(section.getTitle())
                 .contentType(section.getContentType())
                 .contentUrl(section.getContentUrl())
+                .fileDescription(section.getFileDescription())
                 .orderIndex(section.getOrderIndex())
                 .qcmType(section.getQcmType())
                 .maxAttempts(section.getMaxAttempts())

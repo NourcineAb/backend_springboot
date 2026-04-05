@@ -2,6 +2,7 @@ package com.enterprise.poodle.controller;
 
 import com.enterprise.poodle.dto.request.EmployeeUpdateRequest;
 import com.enterprise.poodle.dto.request.PasswordChangeRequest;
+import com.enterprise.poodle.dto.request.RegisterRequest;
 import com.enterprise.poodle.dto.response.EmployeeResponse;
 import com.enterprise.poodle.service.EmployeeService;
 import jakarta.validation.Valid;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +44,13 @@ public class EmployeeController {
 
     // ========== Admin-only endpoints ==========
 
+    @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<EmployeeResponse> createEmployee(
+            @Valid @RequestBody RegisterRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(request));
+    }
+
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Page<EmployeeResponse>> getAllEmployees(
@@ -68,5 +77,13 @@ public class EmployeeController {
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/department/{departmentId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Page<EmployeeResponse>> getEmployeesByDepartment(
+            @PathVariable Long departmentId,
+            @PageableDefault(size = 20) Pageable pageable) {
+        return ResponseEntity.ok(employeeService.getEmployeesByDepartment(departmentId, pageable));
     }
 }

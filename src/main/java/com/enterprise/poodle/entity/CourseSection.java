@@ -38,6 +38,9 @@ public class CourseSection {
     @Column(name = "content_url", columnDefinition = "TEXT")
     private String contentUrl;
 
+    @Column(name = "file_description", columnDefinition = "TEXT")
+    private String fileDescription;
+
     @Column(name = "order_index", nullable = false)
     @Builder.Default
     private Integer orderIndex = 0;

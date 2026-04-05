@@ -55,4 +55,60 @@ public class AnalyticsResponse {
         private long incorrectCount;
         private double failRate;
     }
+
+    // Aggregate endpoints for dashboard
+
+    @Data
+    @Builder
+    public static class OverviewData {
+        private long totalEmployees;
+        private long totalCourses;
+        private long totalEnrollments;
+        private double completionRate;
+        private double passRate;
+        private double averageScore;
+    }
+
+    @Data
+    @Builder
+    public static class CourseAnalyticsData {
+        private Long courseId;
+        private String courseTitle;
+        private long enrollmentCount;
+        private double completionRate;
+        private double passRate;
+        private double averageScore;
+    }
+
+    @Data
+    @Builder
+    public static class OverdueEnrollmentData {
+        private Long enrollmentId;
+        private String employeeName;
+        private String courseTitle;
+        private String deadline;
+        private String departmentName;
+    }
+
+    @Data
+    @Builder
+    public static class FailedQuestionData {
+        private Long questionId;
+        private String questionText;
+        private String courseTitle;
+        private String sectionTitle;
+        private double failureRate;
+        private long totalAttempts;
+    }
+
+    @Data
+    @Builder
+    public static class DepartmentAnalyticsData {
+        private Long departmentId;
+        private String departmentName;
+        private double completionRate;
+        private double passRate;
+        private double averageScore;
+        private long employeeCount;
+    }
 }

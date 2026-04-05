@@ -1,5 +1,6 @@
 package com.enterprise.poodle.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.Data;
 public class QCMQuestionRequest {
 
     @NotBlank(message = "Question text is required")
+    @JsonAlias("text")  // Accept both "questionText" and "text" from frontend
     private String questionText;
 
     @NotBlank(message = "Option A is required")

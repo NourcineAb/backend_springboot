@@ -101,8 +101,8 @@ class DepartmentControllerTest extends BaseIntegrationTest {
             mockMvc.perform(get("/api/departments")
                             .header("Authorization", "Bearer " + adminToken))
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$").isArray())
-                    .andExpect(jsonPath("$.length()").value(4)); // engineering, backend, frontend, hr
+                    .andExpect(jsonPath("$.content").isArray())
+                    .andExpect(jsonPath("$.content.length()").value(4)); // engineering, backend, frontend, hr
         }
     }
 

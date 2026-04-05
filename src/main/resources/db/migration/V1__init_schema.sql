@@ -63,6 +63,7 @@ CREATE TABLE course_sections (
     title           VARCHAR(255)    NOT NULL,
     content_type    VARCHAR(20)     NOT NULL CHECK (content_type IN ('VIDEO', 'AUDIO', 'PDF', 'TEXT', 'QCM')),
     content_url     TEXT,
+    file_description TEXT,
     order_index     INTEGER         NOT NULL DEFAULT 0,
     qcm_type        VARCHAR(20)    CHECK (qcm_type IN ('PRACTICE', 'FINAL')),
     max_attempts    INTEGER,
@@ -156,6 +157,34 @@ CREATE TABLE certificates (
 CREATE INDEX idx_cert_employee ON certificates(employee_id);
 CREATE INDEX idx_cert_course ON certificates(course_id);
 CREATE UNIQUE INDEX idx_cert_code ON certificates(certificate_code);
+
+-- Notifications
+CREATE TABLE notifications (
+    id              BIGSERIAL       PRIMARY KEY,
+    type            VARCHAR(50)     NOT NULL,
+    title           VARCHAR(255)    NOT NULL,
+    message         TEXT            NOT NULL,
+    related_entity_id   BIGINT,
+    related_entity_type VARCHAR(50),
+    created_at      TIMESTAMP       NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_notif_type ON notifications(type);
+CREATE INDEX idx_notif_created ON notifications(created_at);
+
+-- Employee Notifications (join table for many-to-many relationship)
+CREATE TABLE employee_notifications (
+    id              BIGSERIAL       PRIMARY KEY,
+    employee_id     BIGINT          NOT NULL REFERENCES employees(id) ON DELETE CASCADE,
+    notification_id BIGINT          NOT NULL REFERENCES notifications(id) ON DELETE CASCADE,
+    is_read         BOOLEAN         NOT NULL DEFAULT FALSE,
+    read_at         TIMESTAMP,
+    created_at      TIMESTAMP       NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_emp_notif_employee ON employee_notifications(employee_id);
+CREATE INDEX idx_emp_notif_read ON employee_notifications(is_read);
+CREATE INDEX idx_emp_notif_created ON employee_notifications(created_at);
 
 -- Audit Logs
 CREATE TABLE audit_logs (

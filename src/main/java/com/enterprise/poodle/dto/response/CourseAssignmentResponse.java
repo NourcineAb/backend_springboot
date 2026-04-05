@@ -14,4 +14,5 @@ public class CourseAssignmentResponse {
     private Long departmentId;
     private String departmentName;
     private LocalDate deadlineDate;
+    private Integer notifiedCount;
 }

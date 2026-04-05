@@ -2,6 +2,7 @@ package com.enterprise.poodle.service;
 
 import com.enterprise.poodle.dto.request.EmployeeUpdateRequest;
 import com.enterprise.poodle.dto.request.PasswordChangeRequest;
+import com.enterprise.poodle.dto.request.RegisterRequest;
 import com.enterprise.poodle.dto.response.EmployeeResponse;
 import com.enterprise.poodle.entity.Department;
 import com.enterprise.poodle.entity.Employee;
@@ -33,6 +34,36 @@ public class EmployeeService {
     public Page<EmployeeResponse> getAllEmployees(Pageable pageable) {
         return employeeRepository.findAllByDeletedFalse(pageable)
                 .map(this::mapToResponse);
+    }
+
+    @Transactional
+    public EmployeeResponse createEmployee(RegisterRequest request) {
+        // Check if employee already exists
+        if (employeeRepository.existsByEmailAndDeletedFalse(request.getEmail())) {
+            throw new DuplicateResourceException(
+                    "Employee with email " + request.getEmail() + " already exists");
+        }
+
+        // Build employee entity
+        Employee employee = Employee.builder()
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .role(request.getRole())
+                .deleted(false)
+                .build();
+
+        // Assign department if provided
+        if (request.getDepartmentId() != null) {
+            Department department = departmentRepository.findByIdAndDeletedFalse(request.getDepartmentId())
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            "Department", "id", request.getDepartmentId()));
+            employee.setDepartment(department);
+        }
+
+        Employee saved = employeeRepository.save(employee);
+        return mapToResponse(saved);
     }
 
     @Transactional(readOnly = true)
@@ -122,6 +153,17 @@ public class EmployeeService {
                 .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", id));
         employee.setDeleted(true);
         employeeRepository.save(employee);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<EmployeeResponse> getEmployeesByDepartment(Long departmentId, Pageable pageable) {
+        // Verify department exists
+        departmentRepository.findByIdAndDeletedFalse(departmentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Department", "id", departmentId));
+
+        // Get employees in department with pagination
+        return employeeRepository.findByDepartmentIdAndDeletedFalse(departmentId, pageable)
+                .map(this::mapToResponse);
     }
 
     private EmployeeResponse mapToResponse(Employee employee) {

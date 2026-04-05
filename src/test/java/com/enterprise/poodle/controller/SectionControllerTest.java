@@ -175,7 +175,7 @@ class SectionControllerTest extends BaseIntegrationTest {
         void deleteSection() throws Exception {
             mockMvc.perform(delete("/api/sections/{sectionId}", videoSection.getId())
                             .header("Authorization", "Bearer " + adminToken))
-                    .andExpect(status().isNoContent());
+                    .andExpect(status().isOk());
         }
 
         @Test

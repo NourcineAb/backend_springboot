@@ -7,6 +7,7 @@ import com.enterprise.poodle.dto.response.CourseResponse;
 import com.enterprise.poodle.entity.*;
 import com.enterprise.poodle.enums.ActionType;
 import com.enterprise.poodle.enums.CourseStatus;
+import com.enterprise.poodle.enums.NotificationType;
 import com.enterprise.poodle.exception.BusinessException;
 import com.enterprise.poodle.exception.DuplicateResourceException;
 import com.enterprise.poodle.exception.ResourceNotFoundException;
@@ -33,8 +34,10 @@ public class CourseService {
     private final CourseDepartmentAssignmentRepository assignmentRepository;
     private final DepartmentRepository departmentRepository;
     private final EmployeeCourseGradeRepository gradeRepository;
+    private final EmployeeRepository employeeRepository;
     private final SecurityUtils securityUtils;
     private final AuditLogService auditLogService;
+    private final NotificationService notificationService;
     private final CourseMapper courseMapper;
 
     @Transactional
@@ -132,7 +135,35 @@ public class CourseService {
                 Map.of("title", saved.getTitle(), "status", saved.getStatus(),
                         "passingScore", saved.getPassingScore()));
 
-        return mapToResponse(saved);
+        // If course transitioned from DRAFT to PUBLISHED, send assignment notifications
+        CourseStatus oldStatus = (CourseStatus) oldValues.get("status");
+        int totalNotified = 0;
+        if (oldStatus == CourseStatus.DRAFT && saved.getStatus() == CourseStatus.PUBLISHED) {
+            // Notify all employees for each assignment
+            List<CourseDepartmentAssignment> assignments = assignmentRepository.findByCourseId(saved.getId());
+            for (CourseDepartmentAssignment a : assignments) {
+                List<Employee> departmentEmployees = employeeRepository.findByDepartmentId(a.getDepartment().getId());
+                if (!departmentEmployees.isEmpty()) {
+                    List<Long> employeeIds = departmentEmployees.stream()
+                            .map(Employee::getId)
+                            .collect(Collectors.toList());
+
+                    String title = "New Course Assigned";
+                    String message = String.format("You have been assigned a new course: %s", saved.getTitle());
+                    if (a.getDeadlineDate() != null) {
+                        message += String.format(". Deadline: %s", a.getDeadlineDate());
+                    }
+
+                    notificationService.notifyMultipleEmployees(employeeIds, title, message,
+                            NotificationType.COURSE_ASSIGNED, saved.getId(), "COURSE");
+                    totalNotified += employeeIds.size();
+                }
+            }
+        }
+
+        CourseResponse response = mapToResponse(saved);
+        response.setPublishNotifiedCount(totalNotified);
+        return response;
     }
 
     @Transactional
@@ -164,13 +195,34 @@ public class CourseService {
                 .deadlineDate(request.getDeadlineDate())
                 .build();
 
-        assignment = assignmentRepository.save(assignment);
+    assignment = assignmentRepository.save(assignment);
 
         auditLogService.logAction(ActionType.CREATE, "CourseAssignment", assignment.getId(),
                 null, Map.of("courseId", courseId, "departmentId", departmentId,
                         "deadline", request.getDeadlineDate()));
 
-        return mapAssignmentToResponse(assignment);
+        // Send notifications to all employees in the department ONLY if the course is published
+        Integer notifiedCount = 0;
+        if (course.getStatus() == CourseStatus.PUBLISHED) {
+            List<Employee> departmentEmployees = employeeRepository.findByDepartmentId(departmentId);
+            if (!departmentEmployees.isEmpty()) {
+                List<Long> employeeIds = departmentEmployees.stream()
+                        .map(Employee::getId)
+                        .collect(Collectors.toList());
+
+                String title = "New Course Assigned";
+                String message = String.format("You have been assigned a new course: %s", course.getTitle());
+                if (request.getDeadlineDate() != null) {
+                    message += String.format(". Deadline: %s", request.getDeadlineDate());
+                }
+
+                notificationService.notifyMultipleEmployees(employeeIds, title, message,
+                        NotificationType.COURSE_ASSIGNED, courseId, "COURSE");
+                notifiedCount = employeeIds.size();
+            }
+        }
+
+        return mapAssignmentToResponseWithCount(assignment, notifiedCount);
     }
 
     @Transactional(readOnly = true)
@@ -251,6 +303,18 @@ public class CourseService {
                 .departmentId(a.getDepartment().getId())
                 .departmentName(a.getDepartment().getName())
                 .deadlineDate(a.getDeadlineDate())
+                .build();
+    }
+
+    private CourseAssignmentResponse mapAssignmentToResponseWithCount(CourseDepartmentAssignment a, Integer notifiedCount) {
+        return CourseAssignmentResponse.builder()
+                .id(a.getId())
+                .courseId(a.getCourse().getId())
+                .courseTitle(a.getCourse().getTitle())
+                .departmentId(a.getDepartment().getId())
+                .departmentName(a.getDepartment().getName())
+                .deadlineDate(a.getDeadlineDate())
+                .notifiedCount(notifiedCount)
                 .build();
     }
 }

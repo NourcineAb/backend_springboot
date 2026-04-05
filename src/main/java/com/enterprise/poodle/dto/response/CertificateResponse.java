@@ -12,6 +12,7 @@ public class CertificateResponse {
     private String employeeName;
     private String courseTitle;
     private String certificateCode;
+    private String verificationCode;
     private String qrCodeUrl;
     private LocalDateTime issuedAt;
     private boolean revoked;

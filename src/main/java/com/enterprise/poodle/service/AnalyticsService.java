@@ -5,6 +5,7 @@ import com.enterprise.poodle.entity.*;
 import com.enterprise.poodle.exception.ResourceNotFoundException;
 import com.enterprise.poodle.repository.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -176,6 +177,166 @@ public class AnalyticsService {
                 })
                 .sorted((a, b) -> Double.compare(b.getFailRate(), a.getFailRate()))
                 .limit(10)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Get overall analytics overview for dashboard
+     */
+    @Transactional(readOnly = true)
+    public AnalyticsResponse.OverviewData getAnalyticsOverview() {
+        // Count active employees and courses using proper repository methods
+        List<Department> depts = departmentRepository.findAllByDeletedFalse();
+        List<Long> deptIds = depts.stream().map(Department::getId).collect(Collectors.toList());
+        
+        long totalEmployees = deptIds.isEmpty() ? 0 :
+                employeeRepository.findByDepartmentIdIn(deptIds).size();
+        
+        long totalCourses = courseRepository.findAllByDeletedFalse(PageRequest.of(0, 1000)).getTotalElements();
+        long totalEnrollments = assignmentRepository.count();
+
+        // Calculate overall completion and pass rates
+        double avgCompletionRate = 0;
+        double avgPassRate = 0;
+        double avgScore = 0;
+
+        if (totalCourses > 0) {
+            List<Course> courses = courseRepository.findAllByDeletedFalse(PageRequest.of(0, 1000)).getContent();
+            
+            for (Course course : courses) {
+                AnalyticsResponse.CompletionRate completion = getCourseCompletionRate(course.getId());
+                avgCompletionRate += completion.getCompletionRate();
+
+                AnalyticsResponse.PassRate passRate = getCoursePassRate(course.getId());
+                avgPassRate += passRate.getPassRate();
+
+                Double courseAvgScore = gradeRepository.findAverageScoreByDepartmentId(course.getId());
+                avgScore += (courseAvgScore != null ? courseAvgScore : 0);
+            }
+            avgCompletionRate /= totalCourses;
+            avgPassRate /= totalCourses;
+            avgScore /= totalCourses;
+        }
+
+        return AnalyticsResponse.OverviewData.builder()
+                .totalEmployees(totalEmployees)
+                .totalCourses(totalCourses)
+                .totalEnrollments(totalEnrollments)
+                .completionRate(Math.round(avgCompletionRate * 100.0) / 100.0)
+                .passRate(Math.round(avgPassRate * 100.0) / 100.0)
+                .averageScore(Math.round(avgScore * 100.0) / 100.0)
+                .build();
+    }
+
+    /**
+     * Get analytics for all courses
+     */
+    @Transactional(readOnly = true)
+    public List<AnalyticsResponse.CourseAnalyticsData> getAllCoursesAnalytics() {
+        return courseRepository.findAllByDeletedFalse(PageRequest.of(0, 1000)).getContent().stream()
+                .map(course -> {
+                    AnalyticsResponse.CompletionRate completion = getCourseCompletionRate(course.getId());
+                    AnalyticsResponse.PassRate passRate = getCoursePassRate(course.getId());
+                    Double avgScore = gradeRepository.findAverageScoreByDepartmentId(course.getId());
+
+                    long enrollmentCount = assignmentRepository.findByCourseId(course.getId()).size();
+
+                    return AnalyticsResponse.CourseAnalyticsData.builder()
+                            .courseId(course.getId())
+                            .courseTitle(course.getTitle())
+                            .enrollmentCount(enrollmentCount)
+                            .completionRate(completion.getCompletionRate())
+                            .passRate(passRate.getPassRate())
+                            .averageScore(Math.round((avgScore != null ? avgScore : 0) * 100.0) / 100.0)
+                            .build();
+                })
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Get all overdue enrollments across all courses
+     */
+    @Transactional(readOnly = true)
+    public List<AnalyticsResponse.OverdueEnrollmentData> getAllOverdueEnrollments() {
+        return assignmentRepository.findAll().stream()
+                .flatMap(assignment -> {
+                    List<Employee> employees = employeeRepository.findByDepartmentId(assignment.getDepartment().getId());
+                    return employees.stream()
+                            .filter(emp -> assignment.getDeadlineDate() != null && assignment.getDeadlineDate().isBefore(LocalDate.now()))
+                            .map(emp -> AnalyticsResponse.OverdueEnrollmentData.builder()
+                                    .enrollmentId(assignment.getId())
+                                    .employeeName(emp.getFirstName() + " " + emp.getLastName())
+                                    .courseTitle(assignment.getCourse().getTitle())
+                                    .deadline(assignment.getDeadlineDate().toString())
+                                    .departmentName(assignment.getDepartment().getName())
+                                    .build());
+                })
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Get most failed questions across all courses
+     */
+    @Transactional(readOnly = true)
+    public List<AnalyticsResponse.FailedQuestionData> getMostFailedQuestionsGlobally() {
+        return questionRepository.findAll().stream()
+                .map(q -> {
+                    CourseSection section = q.getSection();
+                    long totalAttempts = attemptRepository.countBySectionId(section.getId());
+                    int passingScore = section != null && section.getCourse() != null
+                            ? section.getCourse().getPassingScore() : 70;
+                    long failedAttempts = attemptRepository.countFailedBySectionId(section.getId(), passingScore);
+                    double failRate = totalAttempts > 0 ? (double) failedAttempts / totalAttempts * 100 : 0;
+
+                    return AnalyticsResponse.FailedQuestionData.builder()
+                            .questionId(q.getId())
+                            .questionText(q.getQuestionText())
+                            .courseTitle(section.getCourse().getTitle())
+                            .sectionTitle(section.getTitle())
+                            .failureRate(Math.round(failRate * 100.0) / 100.0)
+                            .totalAttempts(totalAttempts)
+                            .build();
+                })
+                .sorted((a, b) -> Double.compare(b.getFailureRate(), a.getFailureRate()))
+                .limit(10)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Get analytics for all departments
+     */
+    @Transactional(readOnly = true)
+    public List<AnalyticsResponse.DepartmentAnalyticsData> getAllDepartmentsAnalytics() {
+        return departmentRepository.findAllByDeletedFalse().stream()
+                .map(dept -> {
+                    AnalyticsResponse.DepartmentAverageScore deptScore = getDepartmentAverageScore(dept.getId());
+                    long employeeCount = employeeRepository.findByDepartmentId(dept.getId()).size();
+
+                    // Calculate department completion and pass rates
+                    double avgCompletionRate = 0;
+                    double avgPassRate = 0;
+                    long assignmentCount = assignmentRepository.findByDepartmentId(dept.getId()).size();
+
+                    if (assignmentCount > 0) {
+                        for (CourseDepartmentAssignment assignment : assignmentRepository.findByDepartmentId(dept.getId())) {
+                            AnalyticsResponse.CompletionRate completion = getCourseCompletionRate(assignment.getCourse().getId());
+                            AnalyticsResponse.PassRate passRate = getCoursePassRate(assignment.getCourse().getId());
+                            avgCompletionRate += completion.getCompletionRate();
+                            avgPassRate += passRate.getPassRate();
+                        }
+                        avgCompletionRate /= assignmentCount;
+                        avgPassRate /= assignmentCount;
+                    }
+
+                    return AnalyticsResponse.DepartmentAnalyticsData.builder()
+                            .departmentId(dept.getId())
+                            .departmentName(dept.getName())
+                            .completionRate(Math.round(avgCompletionRate * 100.0) / 100.0)
+                            .passRate(Math.round(avgPassRate * 100.0) / 100.0)
+                            .averageScore(deptScore.getAverageScore())
+                            .employeeCount(employeeCount)
+                            .build();
+                })
                 .collect(Collectors.toList());
     }
 }

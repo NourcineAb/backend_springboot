@@ -6,6 +6,7 @@ import com.enterprise.poodle.entity.*;
 import com.enterprise.poodle.enums.*;
 import com.enterprise.poodle.repository.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -44,6 +45,7 @@ public abstract class BaseIntegrationTest {
     @Autowired protected EmployeeCourseGradeRepository gradeRepository;
     @Autowired protected CertificateRepository certificateRepository;
     @Autowired protected AuditLogRepository auditLogRepository;
+    @Autowired protected EmployeeQCMAttemptAnswerRepository employeeQCMAttemptAnswerRepository;
 
     // Shared test data references
     protected Department engineering;
@@ -73,10 +75,17 @@ public abstract class BaseIntegrationTest {
         obtainTokens();
     }
 
-    private void cleanDatabase() {
+    @AfterEach
+    protected void tearDown() {
+        cleanDatabase();
+    }
+
+    protected void cleanDatabase() {
+        // Delete entities with dependencies first
         auditLogRepository.deleteAll();
         certificateRepository.deleteAll();
         gradeRepository.deleteAll();
+        employeeQCMAttemptAnswerRepository.deleteAll();
         attemptRepository.deleteAll();
         progressRepository.deleteAll();
         questionRepository.deleteAll();

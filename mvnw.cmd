@@ -141,7 +141,7 @@ IF NOT %WRAPPER_SHA_256_SUM%=="" (
 @REM work with both Windows and non-Windows executions.
 set MAVEN_CMD_LINE_ARGS=%*
 
-%JAVA_HOME%\bin\java.exe ^
+"%JAVA_HOME%\bin\java.exe" ^
   %JVM_CONFIG_MAVEN_PROPS% ^
   %MAVEN_OPTS% ^
   %MAVEN_DEBUG_OPTS% ^

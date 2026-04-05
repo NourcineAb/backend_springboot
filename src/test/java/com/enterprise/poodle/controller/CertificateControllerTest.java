@@ -34,11 +34,11 @@ class CertificateControllerTest extends BaseIntegrationTest {
             mockMvc.perform(get("/api/certificates/my")
                             .header("Authorization", "Bearer " + employeeToken))
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$").isArray())
-                    .andExpect(jsonPath("$.length()").value(1))
-                    .andExpect(jsonPath("$[0].courseTitle").value("Test Course"))
-                    .andExpect(jsonPath("$[0].certificateCode").value(certCode))
-                    .andExpect(jsonPath("$[0].revoked").value(false));
+                    .andExpect(jsonPath("$.content").isArray())
+                    .andExpect(jsonPath("$.content.length()").value(1))
+                    .andExpect(jsonPath("$.content[0].courseTitle").value("Test Course"))
+                    .andExpect(jsonPath("$.content[0].certificateCode").value(certCode))
+                    .andExpect(jsonPath("$.content[0].revoked").value(false));
         }
 
         @Test
@@ -47,8 +47,8 @@ class CertificateControllerTest extends BaseIntegrationTest {
             mockMvc.perform(get("/api/certificates/my")
                             .header("Authorization", "Bearer " + employeeToken))
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$").isArray())
-                    .andExpect(jsonPath("$.length()").value(0));
+                    .andExpect(jsonPath("$.content").isArray())
+                    .andExpect(jsonPath("$.content.length()").value(0));
         }
 
         @Test

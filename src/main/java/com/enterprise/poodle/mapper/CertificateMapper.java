@@ -10,5 +10,10 @@ public interface CertificateMapper {
 
     @Mapping(target = "employeeName", expression = "java(certificate.getEmployee().getFirstName() + \" \" + certificate.getEmployee().getLastName())")
     @Mapping(source = "course.title", target = "courseTitle")
+    @Mapping(source = "certificateCode", target = "certificateCode")
+    @Mapping(source = "certificateCode", target = "verificationCode")
+    @Mapping(source = "qrCodeUrl", target = "qrCodeUrl")
+    @Mapping(source = "issuedAt", target = "issuedAt")
+    @Mapping(source = "revoked", target = "revoked")
     CertificateResponse toResponse(Certificate certificate);
 }

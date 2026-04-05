@@ -13,6 +13,7 @@ public class SectionResponse {
     private String title;
     private ContentType contentType;
     private String contentUrl;
+    private String fileDescription;
     private Integer orderIndex;
     private QcmType qcmType;
     private Integer maxAttempts;

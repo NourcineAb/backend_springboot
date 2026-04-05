@@ -18,4 +18,5 @@ public class CourseResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private List<Long> prerequisiteCourseIds;
+    private Integer publishNotifiedCount;
 }

@@ -1,0 +1,25 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.enterprise:poodle >------------------------
+[INFO] Building Poodle LMS 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.4.1:clean (default-clean) @ poodle ---
+[INFO] Deleting C:\Learning\IIT\2nd Year\2nd Semester\Projects\JEE-Angular\backend_springboot\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ poodle ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 7 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ poodle ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 105 source files with javac [debug parameters release 21] to target\classes
+[INFO] /C:/Learning/IIT/2nd Year/2nd Semester/Projects/JEE-Angular/backend_springboot/src/main/java/com/enterprise/poodle/service/LLMService.java: C:\Learning\IIT\2nd Year\2nd Semester\Projects\JEE-Angular\backend_springboot\src\main\java\com\enterprise\poodle\service\LLMService.java uses unchecked or unsafe operations.
+[INFO] /C:/Learning/IIT/2nd Year/2nd Semester/Projects/JEE-Angular/backend_springboot/src/main/java/com/enterprise/poodle/service/LLMService.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  31.040 s
+[INFO] Finished at: 2026-03-22T19:35:10+01:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,21 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.enterprise:poodle >------------------------
+[INFO] Building Poodle LMS 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- flyway:10.20.1:clean (default-cli) @ poodle ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.881 s
+[INFO] Finished at: 2026-03-22T19:52:41+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.flywaydb:flyway-maven-plugin:10.20.1:clean (default-cli) on project poodle: org.flywaydb.core.api.FlywayException: Unable to connect to the database. Configure the url, user and password! -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

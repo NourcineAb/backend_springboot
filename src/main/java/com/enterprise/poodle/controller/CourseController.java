@@ -10,6 +10,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,11 +38,21 @@ public class CourseController {
 
     @GetMapping
     public ResponseEntity<Page<CourseResponse>> getAllCourses(
+            @RequestParam(value = "order", required = false) String order,
             @PageableDefault(size = 20) Pageable pageable) {
-        if (securityUtils.isAdmin()) {
-            return ResponseEntity.ok(courseService.getAllCourses(pageable));
+        // Support order=oldest|newest to sort by createdAt
+        Pageable pageToUse = pageable;
+        if (order != null && !order.isBlank()) {
+            Sort sort = "oldest".equalsIgnoreCase(order)
+                    ? Sort.by(Sort.Direction.ASC, "createdAt")
+                    : Sort.by(Sort.Direction.DESC, "createdAt");
+            pageToUse = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
         }
-        return ResponseEntity.ok(courseService.getEmployeeCourses(pageable));
+
+        if (securityUtils.isAdmin()) {
+            return ResponseEntity.ok(courseService.getAllCourses(pageToUse));
+        }
+        return ResponseEntity.ok(courseService.getEmployeeCourses(pageToUse));
     }
 
     @GetMapping("/{id}")
