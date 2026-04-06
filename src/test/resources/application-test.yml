@@ -40,3 +40,8 @@ logging:
   level:
     com.enterprise.poodle: WARN
     org.springframework.security: WARN
+
+llm:
+  provider: gemini
+  api-key: "test-api-key"
+  model: "gemini-1.0-pro"

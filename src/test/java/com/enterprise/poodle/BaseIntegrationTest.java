@@ -64,6 +64,8 @@ public abstract class BaseIntegrationTest {
     protected CourseSection finalQcmSection;
     protected QCMQuestion question1;
     protected QCMQuestion question2;
+    protected QCMQuestion question3;
+    protected QCMQuestion question4;
 
     protected String adminToken;
     protected String employeeToken;
@@ -160,6 +162,16 @@ public abstract class BaseIntegrationTest {
                 .section(finalQcmSection).questionText("What is 2 + 2?")
                 .optionA("2").optionB("3").optionC("4").optionD("5")
                 .correctOption("C").build());
+
+        question3 = questionRepository.save(QCMQuestion.builder()
+                .section(practiceQcmSection).questionText("What is the capital of France?")
+                .optionA("Berlin").optionB("Madrid").optionC("Paris").optionD("Rome")
+                .correctOption("C").build());
+
+        question4 = questionRepository.save(QCMQuestion.builder()
+                .section(practiceQcmSection).questionText("What is 3 * 3?")
+                .optionA("6").optionB("9").optionC("12").optionD("3")
+                .correctOption("B").build());
 
         // Assign published course to backend department
         assignmentRepository.save(CourseDepartmentAssignment.builder()

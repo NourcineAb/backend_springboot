@@ -35,11 +35,11 @@ class EnrollmentAttemptControllerTest extends BaseIntegrationTest {
                 .sectionId(sectionId)
                 .answers(List.of(
                         QCMAttemptFromEnrollmentRequest.QCMAnswerRequest.builder()
-                                .questionId(question1.getId())
+                                .questionId(question3.getId())
                                 .selectedAnswerIndex(0) // Answer A
                                 .build(),
                         QCMAttemptFromEnrollmentRequest.QCMAnswerRequest.builder()
-                                .questionId(question2.getId())
+                                .questionId(question4.getId())
                                 .selectedAnswerIndex(1) // Answer B
                                 .build()
                 ))

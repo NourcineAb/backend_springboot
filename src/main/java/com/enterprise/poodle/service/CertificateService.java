@@ -69,9 +69,20 @@ public class CertificateService {
                                 contents.lineTo(pageWidth - 80, pageHeight - 130);
                                 contents.stroke();
 
-                                // Load custom font
-                                InputStream fontStream = getClass().getResourceAsStream("/fonts/Roboto-Regular.ttf");
-                                PDType0Font roboto = PDType0Font.load(doc, fontStream, true);
+                                // Load custom font or fallback to standard font
+                                org.apache.pdfbox.pdmodel.font.PDFont roboto;
+                                try {
+                                    InputStream fontStream = getClass().getResourceAsStream("/fonts/Roboto-Regular.ttf");
+                                    if (fontStream != null) {
+                                        roboto = PDType0Font.load(doc, fontStream, true);
+                                    } else {
+                                        log.warn("Custom font not found, using standard font");
+                                        roboto = org.apache.pdfbox.pdmodel.font.PDType1Font.HELVETICA;
+                                    }
+                                } catch (Exception e) {
+                                    log.warn("Failed to load custom font, using standard font: {}", e.getMessage());
+                                    roboto = org.apache.pdfbox.pdmodel.font.PDType1Font.HELVETICA;
+                                }
 
                                 // Body text
                                 contents.beginText();

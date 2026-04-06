@@ -215,7 +215,7 @@ class QCMControllerTest extends BaseIntegrationTest {
             // Create a text section with LLM enabled
             CourseSection textSection = sectionRepository.save(CourseSection.builder()
                     .course(publishedCourse).title("Text Content")
-                    .contentType(ContentType.TEXT).contentUrl("https://example.com/content")
+                    .contentType(ContentType.QCM).qcmType(QcmType.PRACTICE).contentUrl("https://example.com/content")
                     .orderIndex(10).llmDraftEnabled(true).build());
 
             mockMvc.perform(post("/api/sections/{sectionId}/generate-qcm-draft", textSection.getId())

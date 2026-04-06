@@ -13,6 +13,7 @@ import com.enterprise.poodle.repository.CourseRepository;
 import com.enterprise.poodle.repository.CourseSectionRepository;
 import com.enterprise.poodle.repository.QCMQuestionRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class SectionService {
@@ -31,8 +33,23 @@ public class SectionService {
 
     @Transactional
     public SectionResponse createSection(Long courseId, SectionRequest request) {
+        log.info("Creating section for course: {}", courseId);
+        log.debug("Section request: title={}, contentType={}, contentUrl={}", 
+                request.getTitle(), request.getContentType(), request.getContentUrl());
+        
         Course course = courseRepository.findByIdAndDeletedFalse(courseId)
                 .orElseThrow(() -> new ResourceNotFoundException("Course", "id", courseId));
+
+        // Validate request
+        if (request == null) {
+            throw new BusinessException("Section request cannot be null");
+        }
+        if (request.getTitle() == null || request.getTitle().isBlank()) {
+            throw new BusinessException("Section title is required");
+        }
+        if (request.getContentType() == null) {
+            throw new BusinessException("Content type is required");
+        }
 
         // Validate FINAL QCM uniqueness
         if (request.getContentType() == ContentType.QCM
@@ -53,6 +70,7 @@ public class SectionService {
                 .llmDraftEnabled(request.getLlmDraftEnabled() != null && request.getLlmDraftEnabled())
                 .build();
 
+        log.debug("Saving section: {}", section.getTitle());
         CourseSection saved = sectionRepository.save(section);
         
         // Build response while still within transaction (course is still accessible)
@@ -71,6 +89,7 @@ public class SectionService {
                 .questionCount((int) questionRepository.countBySectionId(saved.getId()))
                 .build();
         
+        log.info("Section created successfully: id={}, title={}", saved.getId(), saved.getTitle());
         return response;
     }
 
