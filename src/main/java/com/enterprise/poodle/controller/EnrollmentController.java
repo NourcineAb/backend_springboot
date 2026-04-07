@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/enrollments")
 @RequiredArgsConstructor
-@PreAuthorize("hasRole('EMPLOYEE')")
+@PreAuthorize("hasRole('EMPLOYEE') or hasRole('ADMIN')")
 public class EnrollmentController {
 
     private final EnrollmentService enrollmentService;
@@ -23,10 +23,24 @@ public class EnrollmentController {
     /**
      * Get all enrollments for the current employee
      * An enrollment is created when a course is assigned to an employee's department
+     * Admins can also access this to view employee progress
      */
     @GetMapping("/my")
     public ResponseEntity<List<EnrollmentResponse>> getMyEnrollments() {
         return ResponseEntity.ok(enrollmentService.getMyEnrollments());
+    }
+
+    /**
+     * Get all enrollments for a specific employee (admin only)
+     * Used by admins to view employee course progress
+     *
+     * @param employeeId The ID of the employee
+     * @return List of enrollments for the specified employee
+     */
+    @GetMapping("/employee/{employeeId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<EnrollmentResponse>> getEmployeeEnrollments(@PathVariable Long employeeId) {
+        return ResponseEntity.ok(enrollmentService.getEnrollmentsByEmployeeId(employeeId));
     }
 
     /**

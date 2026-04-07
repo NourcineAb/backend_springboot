@@ -37,14 +37,4 @@ public class CertificateController {
     public ResponseEntity<CertificateResponse> revokeCertificate(@PathVariable Long id) {
         return ResponseEntity.ok(certificateService.revokeCertificate(id));
     }
-
-    @GetMapping("/{id}/pdf")
-    @PreAuthorize("hasRole('EMPLOYEE') or hasRole('ADMIN')")
-    public ResponseEntity<byte[]> downloadPdf(@PathVariable Long id) {
-        byte[] pdf = certificateService.generatePdf(id);
-        return ResponseEntity.ok()
-                .header("Content-Type", "application/pdf")
-                .header("Content-Disposition", "attachment; filename=certificate_" + id + ".pdf")
-                .body(pdf);
-    }
 }

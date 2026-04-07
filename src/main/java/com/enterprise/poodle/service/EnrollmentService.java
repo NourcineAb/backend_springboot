@@ -14,6 +14,7 @@ import com.enterprise.poodle.repository.CourseDepartmentAssignmentRepository;
 import com.enterprise.poodle.repository.CourseSectionRepository;
 import com.enterprise.poodle.repository.EmployeeCourseGradeRepository;
 import com.enterprise.poodle.repository.EmployeeQCMAttemptRepository;
+import com.enterprise.poodle.repository.EmployeeRepository;
 import com.enterprise.poodle.security.SecurityUtils;
 import com.enterprise.poodle.enums.QcmType;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,7 @@ public class EnrollmentService {
     private final EmployeeCourseGradeRepository gradeRepository;
     private final CourseSectionRepository sectionRepository;
     private final EmployeeQCMAttemptRepository attemptRepository;
+    private final EmployeeRepository employeeRepository;
     private final QCMService qcmService;
     private final SecurityUtils securityUtils;
 
@@ -54,6 +56,31 @@ public class EnrollmentService {
         }
 
         // Get all courses assigned to employee's department
+        List<CourseDepartmentAssignment> assignments = 
+                assignmentRepository.findByDepartmentId(employee.getDepartment().getId());
+
+        return assignments.stream()
+                .map(assignment -> mapToEnrollmentResponse(assignment, employee))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Get all enrollments for a specific employee (used by admins to view employee progress)
+     * 
+     * @param employeeId The ID of the employee
+     * @return List of enrollments for the specified employee
+     */
+    @Transactional(readOnly = true)
+    public List<EnrollmentResponse> getEnrollmentsByEmployeeId(Long employeeId) {
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new BusinessException("Employee not found"));
+        
+        if (employee.getDepartment() == null) {
+            log.warn("Employee {} has no department assigned", employeeId);
+            return List.of();
+        }
+
+        // Get all courses assigned to the employee's department
         List<CourseDepartmentAssignment> assignments = 
                 assignmentRepository.findByDepartmentId(employee.getDepartment().getId());
 
