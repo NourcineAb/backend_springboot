@@ -129,7 +129,7 @@ public class LLMService {
     private List<QCMQuestion> generateWithGemini(CourseSection section, String documentContent, Integer numberOfQuestions) {
         try {
             String prompt = buildGeminiPrompt(documentContent, numberOfQuestions);
-            String model = llmProperties.getModel() != null ? llmProperties.getModel() : "gemini-2.0-flash";
+            String model = llmProperties.getModel() != null ? llmProperties.getModel() : "gemini-2.5-flash";
             String apiKey = llmProperties.getApiKey();
             
             String url = "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + apiKey;

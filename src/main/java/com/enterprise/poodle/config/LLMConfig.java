@@ -40,6 +40,6 @@ public class LLMConfig {
     public static class LLMProperties {
         private String provider = "gemini";
         private String apiKey;
-        private String model = "gemini-2.0-flash";
+        private String model = "gemini-2.5-flash";
     }
 }
