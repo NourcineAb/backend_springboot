@@ -65,13 +65,13 @@ public class LLMService {
                     PDFTextStripper pdfStripper = new PDFTextStripper();
                     documentContent = pdfStripper.getText(document);
                     document.close();
-                    log.info("✅ Successfully extracted {} characters from PDF", documentContent.length());
+                    log.info("Successfully extracted {} characters from PDF", documentContent.length());
                 } else {
-                    log.warn("⚠️ PDF content is empty, using file description as fallback");
+                    log.warn("PDF content is empty, using file description as fallback");
                     documentContent = section.getFileDescription() != null ? section.getFileDescription() : "";
                 }
             } catch (Exception e) {
-                log.warn("⚠️ Failed to read PDF content: {}, using file description as fallback", e.getMessage());
+                log.warn("Failed to read PDF content: {}, using file description as fallback", e.getMessage());
                 documentContent = section.getFileDescription() != null ? section.getFileDescription() : "";
             }
         } else {
@@ -79,26 +79,26 @@ public class LLMService {
         }
 
         if (documentContent == null || documentContent.trim().isEmpty()) {
-            log.warn("⚠️ No content available for QCM generation, using placeholder questions");
+            log.warn("No content available for QCM generation, using placeholder questions");
         }
 
         // Delete existing questions
         List<QCMQuestion> existingQuestions = questionRepository.findBySectionId(sectionId);
         questionRepository.deleteAll(existingQuestions);
 
-        log.info("🤖 Generating {} QCM draft questions for section '{}' using {}",
-                numberOfQuestions, section.getTitle(), llmProperties.getProvider());
+        log.info("Generating {} QCM draft questions for section '{}'",
+                numberOfQuestions, section.getTitle());
 
         List<QCMQuestion> draftQuestions;
         
         if (documentContent == null || documentContent.trim().isEmpty()) {
-            log.warn("⚠️ No content available for QCM generation, using placeholder questions");
+            log.warn("No content available for QCM generation, using placeholder questions");
             draftQuestions = generatePlaceholderDraft(section, numberOfQuestions);
         } else if (llmProperties.getApiKey() != null && !llmProperties.getApiKey().isEmpty()) {
-            log.info("✅ Using Gemini API for question generation");
+            log.info("Using Gemini API for question generation");
             draftQuestions = generateWithGemini(section, documentContent, numberOfQuestions);
         } else {
-            log.warn("⚠️ Gemini API not configured - using placeholder generation");
+            log.warn("Gemini API not configured - using placeholder generation");
             draftQuestions = generatePlaceholderDraft(section, numberOfQuestions);
         }
 
@@ -134,7 +134,7 @@ public class LLMService {
             
             String url = "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + apiKey;
             
-            log.info("📌 Constructed Gemini API URL: {}", url.replaceAll("key=.*", "key=***REDACTED***"));
+            log.debug("Constructed Gemini API URL: {}", url.replaceAll("key=.*", "key=***REDACTED***"));
             
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -149,15 +149,15 @@ public class LLMService {
 
             HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
 
-            log.debug("📤 Sending prompt to Gemini API...");
+            log.debug("Sending prompt to Gemini API...");
             Map<String, Object> response = geminiRestTemplate.postForObject(url, entity, Map.class);
-            log.debug("📥 Received response from Gemini API");
+            log.debug("Received response from Gemini API");
             
             String geminiResponse = extractResponseText(response);
             return parseGeminiResponse(geminiResponse, section, numberOfQuestions);
 
         } catch (Exception e) {
-            log.error("❌ Unexpected error during Gemini API call: {}", e.getMessage(), e);
+            log.error("Unexpected error during Gemini API call: {}", e.getMessage(), e);
             throw new BusinessException("Error generating questions: " + e.getMessage());
         }
     }
@@ -222,15 +222,15 @@ public class LLMService {
             }
             
             if (questions.isEmpty()) {
-                log.warn("⚠️ No questions parsed from Gemini response, using placeholder");
+                log.warn("No questions parsed from Gemini response, using placeholder");
                 return generatePlaceholderDraft(section, numberOfQuestions);
             }
             
-            log.info("✅ Generated {} questions from Gemini", questions.size());
+            log.info("Generated {} questions from Gemini", questions.size());
             return questions;
             
         } catch (Exception e) {
-            log.error("❌ Error parsing Gemini response: {}", e.getMessage());
+            log.error("Error parsing Gemini response: {}", e.getMessage());
             return generatePlaceholderDraft(section, numberOfQuestions);
         }
     }

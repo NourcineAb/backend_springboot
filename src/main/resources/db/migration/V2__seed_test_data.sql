@@ -364,301 +364,301 @@ INSERT INTO course_department_assignments (id, course_id, department_id, deadlin
 -- =========== EMPLOYEE COURSE PROGRESS ===========
 INSERT INTO employee_course_progress (id, employee_id, course_id, section_id, status, completed_at) VALUES
 -- Alice (6) — Java: all 6 sections completed
-(1,  6,  1, 1,  'COMPLETED',   NOW() - INTERVAL '20 days'),
-(2,  6,  1, 2,  'COMPLETED',   NOW() - INTERVAL '18 days'),
-(3,  6,  1, 3,  'COMPLETED',   NOW() - INTERVAL '16 days'),
-(4,  6,  1, 4,  'COMPLETED',   NOW() - INTERVAL '14 days'),
-(5,  6,  1, 5,  'COMPLETED',   NOW() - INTERVAL '13 days'),
-(6,  6,  1, 6,  'COMPLETED',   NOW() - INTERVAL '12 days'),
+(1,  6,  1, 1,  'COMPLETED',   DATEADD(day, -20, NOW())),
+(2,  6,  1, 2,  'COMPLETED',   DATEADD(day, -18, NOW())),
+(3,  6,  1, 3,  'COMPLETED',   DATEADD(day, -16, NOW())),
+(4,  6,  1, 4,  'COMPLETED',   DATEADD(day, -14, NOW())),
+(5,  6,  1, 5,  'COMPLETED',   DATEADD(day, -13, NOW())),
+(6,  6,  1, 6,  'COMPLETED',   DATEADD(day, -12, NOW())),
 -- Alice — Spring Boot: 3 of 6 done, 1 in progress
-(7,  6,  2, 7,  'COMPLETED',   NOW() - INTERVAL '10 days'),
-(8,  6,  2, 8,  'COMPLETED',   NOW() - INTERVAL '8 days'),
-(9,  6,  2, 9,  'COMPLETED',   NOW() - INTERVAL '6 days'),
+(7,  6,  2, 7,  'COMPLETED',   DATEADD(day, -10, NOW())),
+(8,  6,  2, 8,  'COMPLETED',   DATEADD(day, -8, NOW())),
+(9,  6,  2, 9,  'COMPLETED',   DATEADD(day, -6, NOW())),
 (10, 6,  2, 10, 'IN_PROGRESS', NULL),
 -- Bob (7) — Java: 2 done, 1 in progress
-(11, 7,  1, 1,  'COMPLETED',   NOW() - INTERVAL '15 days'),
-(12, 7,  1, 2,  'COMPLETED',   NOW() - INTERVAL '13 days'),
+(11, 7,  1, 1,  'COMPLETED',   DATEADD(day, -15, NOW())),
+(12, 7,  1, 2,  'COMPLETED',   DATEADD(day, -13, NOW())),
 (13, 7,  1, 3,  'IN_PROGRESS', NULL),
 -- Carlos (8) — Java: 4 done
-(14, 8,  1, 1,  'COMPLETED',   NOW() - INTERVAL '12 days'),
-(15, 8,  1, 2,  'COMPLETED',   NOW() - INTERVAL '11 days'),
-(16, 8,  1, 3,  'COMPLETED',   NOW() - INTERVAL '10 days'),
-(17, 8,  1, 4,  'COMPLETED',   NOW() - INTERVAL '9 days'),
+(14, 8,  1, 1,  'COMPLETED',   DATEADD(day, -12, NOW())),
+(15, 8,  1, 2,  'COMPLETED',   DATEADD(day, -11, NOW())),
+(16, 8,  1, 3,  'COMPLETED',   DATEADD(day, -10, NOW())),
+(17, 8,  1, 4,  'COMPLETED',   DATEADD(day, -9, NOW())),
 -- Charlie (12) — QA: all 6 sections completed
-(18, 12, 4, 19, 'COMPLETED',   NOW() - INTERVAL '22 days'),
-(19, 12, 4, 20, 'COMPLETED',   NOW() - INTERVAL '20 days'),
-(20, 12, 4, 21, 'COMPLETED',   NOW() - INTERVAL '18 days'),
-(21, 12, 4, 22, 'COMPLETED',   NOW() - INTERVAL '16 days'),
-(22, 12, 4, 23, 'COMPLETED',   NOW() - INTERVAL '14 days'),
-(23, 12, 4, 24, 'COMPLETED',   NOW() - INTERVAL '12 days'),
+(18, 12, 4, 19, 'COMPLETED',   DATEADD(day, -22, NOW())),
+(19, 12, 4, 20, 'COMPLETED',   DATEADD(day, -20, NOW())),
+(20, 12, 4, 21, 'COMPLETED',   DATEADD(day, -18, NOW())),
+(21, 12, 4, 22, 'COMPLETED',   DATEADD(day, -16, NOW())),
+(22, 12, 4, 23, 'COMPLETED',   DATEADD(day, -14, NOW())),
+(23, 12, 4, 24, 'COMPLETED',   DATEADD(day, -12, NOW())),
 -- Grace (13) — QA: all 6 completed
-(24, 13, 4, 19, 'COMPLETED',   NOW() - INTERVAL '15 days'),
-(25, 13, 4, 20, 'COMPLETED',   NOW() - INTERVAL '14 days'),
-(26, 13, 4, 21, 'COMPLETED',   NOW() - INTERVAL '13 days'),
-(27, 13, 4, 22, 'COMPLETED',   NOW() - INTERVAL '12 days'),
-(28, 13, 4, 23, 'COMPLETED',   NOW() - INTERVAL '11 days'),
-(29, 13, 4, 24, 'COMPLETED',   NOW() - INTERVAL '9 days'),
+(24, 13, 4, 19, 'COMPLETED',   DATEADD(day, -15, NOW())),
+(25, 13, 4, 20, 'COMPLETED',   DATEADD(day, -14, NOW())),
+(26, 13, 4, 21, 'COMPLETED',   DATEADD(day, -13, NOW())),
+(27, 13, 4, 22, 'COMPLETED',   DATEADD(day, -12, NOW())),
+(28, 13, 4, 23, 'COMPLETED',   DATEADD(day, -11, NOW())),
+(29, 13, 4, 24, 'COMPLETED',   DATEADD(day, -9, NOW())),
 -- Diana Wu (9) — Database: all 6 completed
-(30, 9,  3, 13, 'COMPLETED',   NOW() - INTERVAL '25 days'),
-(31, 9,  3, 14, 'COMPLETED',   NOW() - INTERVAL '23 days'),
-(32, 9,  3, 15, 'COMPLETED',   NOW() - INTERVAL '21 days'),
-(33, 9,  3, 16, 'COMPLETED',   NOW() - INTERVAL '19 days'),
-(34, 9,  3, 17, 'COMPLETED',   NOW() - INTERVAL '17 days'),
-(35, 9,  3, 18, 'COMPLETED',   NOW() - INTERVAL '15 days'),
+(30, 9,  3, 13, 'COMPLETED',   DATEADD(day, -25, NOW())),
+(31, 9,  3, 14, 'COMPLETED',   DATEADD(day, -23, NOW())),
+(32, 9,  3, 15, 'COMPLETED',   DATEADD(day, -21, NOW())),
+(33, 9,  3, 16, 'COMPLETED',   DATEADD(day, -19, NOW())),
+(34, 9,  3, 17, 'COMPLETED',   DATEADD(day, -17, NOW())),
+(35, 9,  3, 18, 'COMPLETED',   DATEADD(day, -15, NOW())),
 -- Fatima (11) — Database: 2 sections done
-(36, 11, 3, 13, 'COMPLETED',   NOW() - INTERVAL '8 days'),
+(36, 11, 3, 13, 'COMPLETED',   DATEADD(day, -8, NOW())),
 (37, 11, 3, 14, 'IN_PROGRESS', NULL),
 -- Ivan (15) — Docker: 2 done, 1 in progress
-(38, 15, 6, 30, 'COMPLETED',   NOW() - INTERVAL '5 days'),
-(39, 15, 6, 31, 'COMPLETED',   NOW() - INTERVAL '3 days'),
+(38, 15, 6, 30, 'COMPLETED',   DATEADD(day, -5, NOW())),
+(39, 15, 6, 31, 'COMPLETED',   DATEADD(day, -3, NOW())),
 (40, 15, 6, 32, 'IN_PROGRESS', NULL),
 -- Julia (16) — Docker: 1 done
-(41, 16, 6, 30, 'COMPLETED',   NOW() - INTERVAL '4 days'),
+(41, 16, 6, 30, 'COMPLETED',   DATEADD(day, -4, NOW())),
 -- Aaron (33) — Data Analysis: all 5 done
-(42, 33, 8, 40, 'COMPLETED',   NOW() - INTERVAL '30 days'),
-(43, 33, 8, 41, 'COMPLETED',   NOW() - INTERVAL '28 days'),
-(44, 33, 8, 42, 'COMPLETED',   NOW() - INTERVAL '26 days'),
-(45, 33, 8, 43, 'COMPLETED',   NOW() - INTERVAL '24 days'),
-(46, 33, 8, 44, 'COMPLETED',   NOW() - INTERVAL '22 days'),
+(42, 33, 8, 40, 'COMPLETED',   DATEADD(day, -30, NOW())),
+(43, 33, 8, 41, 'COMPLETED',   DATEADD(day, -28, NOW())),
+(44, 33, 8, 42, 'COMPLETED',   DATEADD(day, -26, NOW())),
+(45, 33, 8, 43, 'COMPLETED',   DATEADD(day, -24, NOW())),
+(46, 33, 8, 44, 'COMPLETED',   DATEADD(day, -22, NOW())),
 -- Beatrice (34) — Data Analysis: 3 done
-(47, 34, 8, 40, 'COMPLETED',   NOW() - INTERVAL '20 days'),
-(48, 34, 8, 41, 'COMPLETED',   NOW() - INTERVAL '18 days'),
-(49, 34, 8, 42, 'COMPLETED',   NOW() - INTERVAL '16 days'),
+(47, 34, 8, 40, 'COMPLETED',   DATEADD(day, -20, NOW())),
+(48, 34, 8, 41, 'COMPLETED',   DATEADD(day, -18, NOW())),
+(49, 34, 8, 42, 'COMPLETED',   DATEADD(day, -16, NOW())),
 -- Laura (18) — Agile: 1 done, 1 in progress
-(50, 18, 9, 45, 'COMPLETED',   NOW() - INTERVAL '7 days'),
+(50, 18, 9, 45, 'COMPLETED',   DATEADD(day, -7, NOW())),
 (51, 18, 9, 46, 'IN_PROGRESS', NULL),
 -- Samuel (25) — Financial Literacy: 2 done
-(52, 25, 10, 49, 'COMPLETED',  NOW() - INTERVAL '14 days'),
-(53, 25, 10, 50, 'COMPLETED',  NOW() - INTERVAL '12 days'),
+(52, 25, 10, 49, 'COMPLETED',  DATEADD(day, -14, NOW())),
+(53, 25, 10, 50, 'COMPLETED',  DATEADD(day, -12, NOW())),
 -- Yusuf (31) — Cybersecurity: all 5 done
-(54, 31, 7, 35, 'COMPLETED',   NOW() - INTERVAL '18 days'),
-(55, 31, 7, 36, 'COMPLETED',   NOW() - INTERVAL '16 days'),
-(56, 31, 7, 37, 'COMPLETED',   NOW() - INTERVAL '14 days'),
-(57, 31, 7, 38, 'COMPLETED',   NOW() - INTERVAL '12 days'),
-(58, 31, 7, 39, 'COMPLETED',   NOW() - INTERVAL '10 days'),
+(54, 31, 7, 35, 'COMPLETED',   DATEADD(day, -18, NOW())),
+(55, 31, 7, 36, 'COMPLETED',   DATEADD(day, -16, NOW())),
+(56, 31, 7, 37, 'COMPLETED',   DATEADD(day, -14, NOW())),
+(57, 31, 7, 38, 'COMPLETED',   DATEADD(day, -12, NOW())),
+(58, 31, 7, 39, 'COMPLETED',   DATEADD(day, -10, NOW())),
 -- Igor (41) — Cybersecurity: not started yet (deadline approaching)
 (59, 41, 7, 35, 'NOT_STARTED', NULL);
 
 -- =========== EMPLOYEE QCM ATTEMPTS ===========
 INSERT INTO employee_qcm_attempts (id, employee_id, section_id, attempt_number, score, taken_at) VALUES
 -- Alice — Java final (section 6): failed first, passed second
-(1,  6,  6,  1, 62, NOW() - INTERVAL '13 days'),
-(2,  6,  6,  2, 85, NOW() - INTERVAL '12 days'),
+(1,  6,  6,  1, 62, DATEADD(day, -13, NOW())),
+(2,  6,  6,  2, 85, DATEADD(day, -12, NOW())),
 -- Alice — Spring Boot practice (section 12)
-(3,  6,  12, 1, 78, NOW() - INTERVAL '6 days'),
+(3,  6,  12, 1, 78, DATEADD(day, -6, NOW())),
 -- Bob — Java final (section 6): failed, has 1 attempt left
-(4,  7,  6,  1, 55, NOW() - INTERVAL '10 days'),
+(4,  7,  6,  1, 55, DATEADD(day, -10, NOW())),
 -- Carlos — Java final: passed first try
-(5,  8,  6,  1, 72, NOW() - INTERVAL '8 days'),
+(5,  8,  6,  1, 72, DATEADD(day, -8, NOW())),
 -- Charlie — QA final (section 24): passed
-(6,  12, 24, 1, 91, NOW() - INTERVAL '12 days'),
+(6,  12, 24, 1, 91, DATEADD(day, -12, NOW())),
 -- Grace — QA final: passed
-(7,  13, 24, 1, 80, NOW() - INTERVAL '9 days'),
+(7,  13, 24, 1, 80, DATEADD(day, -9, NOW())),
 -- Diana Wu — Database final (section 18): passed
-(8,  9,  18, 1, 88, NOW() - INTERVAL '15 days'),
+(8,  9,  18, 1, 88, DATEADD(day, -15, NOW())),
 -- Aaron — Data Analysis final (section 44): passed
-(9,  33, 44, 1, 74, NOW() - INTERVAL '22 days'),
+(9,  33, 44, 1, 74, DATEADD(day, -22, NOW())),
 -- Ethan (10) — Java final: failed twice (max attempts reached)
-(10, 10, 6,  1, 48, NOW() - INTERVAL '20 days'),
-(11, 10, 6,  2, 52, NOW() - INTERVAL '18 days'),
+(10, 10, 6,  1, 48, DATEADD(day, -20, NOW())),
+(11, 10, 6,  2, 52, DATEADD(day, -18, NOW())),
 -- Henry (14) — QA final: passed
-(12, 14, 24, 1, 76, NOW() - INTERVAL '5 days'),
+(12, 14, 24, 1, 76, DATEADD(day, -5, NOW())),
 -- Yusuf — Cybersecurity final (section 39): passed with high score
-(13, 31, 39, 1, 92, NOW() - INTERVAL '10 days'),
+(13, 31, 39, 1, 92, DATEADD(day, -10, NOW())),
 -- Beatrice — Data Analysis practice: in progress (no final yet)
-(14, 34, 44, 1, 61, NOW() - INTERVAL '3 days'),
+(14, 34, 44, 1, 61, DATEADD(day, -3, NOW())),
 -- Samuel — Financial Literacy practice (section 52)
-(15, 25, 52, 1, 68, NOW() - INTERVAL '5 days');
+(15, 25, 52, 1, 68, DATEADD(day, -5, NOW()));
 
 -- =========== EMPLOYEE COURSE GRADES ===========
 INSERT INTO employee_course_grades (id, employee_id, course_id, final_score, passed, updated_at) VALUES
-(1,  6,  1, 85, TRUE,  NOW() - INTERVAL '12 days'),   -- Alice passed Java
-(2,  8,  1, 72, TRUE,  NOW() - INTERVAL '8 days'),    -- Carlos passed Java
-(3,  12, 4, 91, TRUE,  NOW() - INTERVAL '12 days'),   -- Charlie passed QA
-(4,  13, 4, 80, TRUE,  NOW() - INTERVAL '9 days'),    -- Grace passed QA
-(5,  14, 4, 76, TRUE,  NOW() - INTERVAL '5 days'),    -- Henry passed QA
-(6,  9,  3, 88, TRUE,  NOW() - INTERVAL '15 days'),   -- Diana passed Database
-(7,  33, 8, 74, TRUE,  NOW() - INTERVAL '22 days'),   -- Aaron passed Data Analysis
-(8,  31, 7, 92, TRUE,  NOW() - INTERVAL '10 days'),   -- Yusuf passed Cybersecurity
-(9,  7,  1, 55, FALSE, NOW() - INTERVAL '10 days'),   -- Bob failed Java
-(10, 10, 1, 52, FALSE, NOW() - INTERVAL '18 days');   -- Ethan failed Java (max attempts)
+(1,  6,  1, 85, TRUE,  DATEADD(day, -12, NOW())),   -- Alice passed Java
+(2,  8,  1, 72, TRUE,  DATEADD(day, -8, NOW())),    -- Carlos passed Java
+(3,  12, 4, 91, TRUE,  DATEADD(day, -12, NOW())),   -- Charlie passed QA
+(4,  13, 4, 80, TRUE,  DATEADD(day, -9, NOW())),    -- Grace passed QA
+(5,  14, 4, 76, TRUE,  DATEADD(day, -5, NOW())),    -- Henry passed QA
+(6,  9,  3, 88, TRUE,  DATEADD(day, -15, NOW())),   -- Diana passed Database
+(7,  33, 8, 74, TRUE,  DATEADD(day, -22, NOW())),   -- Aaron passed Data Analysis
+(8,  31, 7, 92, TRUE,  DATEADD(day, -10, NOW())),   -- Yusuf passed Cybersecurity
+(9,  7,  1, 55, FALSE, DATEADD(day, -10, NOW())),   -- Bob failed Java
+(10, 10, 1, 52, FALSE, DATEADD(day, -18, NOW()));   -- Ethan failed Java (max attempts)
 
 -- =========== CERTIFICATES ===========
 INSERT INTO certificates (id, employee_id, course_id, certificate_code, qr_code_url, issued_at, revoked) VALUES
-(1, 6,  1, 'CERT-JAVA-ALICE-2026-001',    'https://cdn.example.com/qr/CERT-JAVA-ALICE-2026-001.png',    NOW() - INTERVAL '12 days', FALSE),
-(2, 8,  1, 'CERT-JAVA-CARLOS-2026-001',   'https://cdn.example.com/qr/CERT-JAVA-CARLOS-2026-001.png',   NOW() - INTERVAL '8 days',  FALSE),
-(3, 12, 4, 'CERT-QA-CHARLIE-2026-001',    'https://cdn.example.com/qr/CERT-QA-CHARLIE-2026-001.png',    NOW() - INTERVAL '12 days', FALSE),
-(4, 13, 4, 'CERT-QA-GRACE-2026-001',      'https://cdn.example.com/qr/CERT-QA-GRACE-2026-001.png',      NOW() - INTERVAL '9 days',  FALSE),
-(5, 14, 4, 'CERT-QA-HENRY-2026-001',      'https://cdn.example.com/qr/CERT-QA-HENRY-2026-001.png',      NOW() - INTERVAL '5 days',  FALSE),
-(6, 9,  3, 'CERT-DB-DIANA-2026-001',      'https://cdn.example.com/qr/CERT-DB-DIANA-2026-001.png',      NOW() - INTERVAL '15 days', FALSE),
-(7, 33, 8, 'CERT-PY-AARON-2026-001',      'https://cdn.example.com/qr/CERT-PY-AARON-2026-001.png',      NOW() - INTERVAL '22 days', FALSE),
-(8, 31, 7, 'CERT-SEC-YUSUF-2026-001',     'https://cdn.example.com/qr/CERT-SEC-YUSUF-2026-001.png',     NOW() - INTERVAL '10 days', FALSE),
+(1, 6,  1, 'CERT-JAVA-ALICE-2026-001',    'https://cdn.example.com/qr/CERT-JAVA-ALICE-2026-001.png',    DATEADD(day, -12, NOW()), FALSE),
+(2, 8,  1, 'CERT-JAVA-CARLOS-2026-001',   'https://cdn.example.com/qr/CERT-JAVA-CARLOS-2026-001.png',   DATEADD(day, -8, NOW()),  FALSE),
+(3, 12, 4, 'CERT-QA-CHARLIE-2026-001',    'https://cdn.example.com/qr/CERT-QA-CHARLIE-2026-001.png',    DATEADD(day, -12, NOW()), FALSE),
+(4, 13, 4, 'CERT-QA-GRACE-2026-001',      'https://cdn.example.com/qr/CERT-QA-GRACE-2026-001.png',      DATEADD(day, -9, NOW()),  FALSE),
+(5, 14, 4, 'CERT-QA-HENRY-2026-001',      'https://cdn.example.com/qr/CERT-QA-HENRY-2026-001.png',      DATEADD(day, -5, NOW()),  FALSE),
+(6, 9,  3, 'CERT-DB-DIANA-2026-001',      'https://cdn.example.com/qr/CERT-DB-DIANA-2026-001.png',      DATEADD(day, -15, NOW()), FALSE),
+(7, 33, 8, 'CERT-PY-AARON-2026-001',      'https://cdn.example.com/qr/CERT-PY-AARON-2026-001.png',      DATEADD(day, -22, NOW()), FALSE),
+(8, 31, 7, 'CERT-SEC-YUSUF-2026-001',     'https://cdn.example.com/qr/CERT-SEC-YUSUF-2026-001.png',     DATEADD(day, -10, NOW()), FALSE),
 -- Revoked certificate (issued in error)
-(9, 7,  1, 'CERT-JAVA-BOB-2026-ERR',      'https://cdn.example.com/qr/CERT-JAVA-BOB-2026-ERR.png',      NOW() - INTERVAL '30 days', TRUE);
+(9, 7,  1, 'CERT-JAVA-BOB-2026-ERR',      'https://cdn.example.com/qr/CERT-JAVA-BOB-2026-ERR.png',      DATEADD(day, -30, NOW()), TRUE);
 
 -- =========== NOTIFICATIONS ===========
 -- Insert shared notifications (normalized schema: content lives here, links in employee_notifications)
 INSERT INTO notifications (id, type, title, message, created_at) VALUES
-(1,   'COURSE_ASSIGNED',     'New Course Available',       'You have been enrolled in Java Programming Fundamentals. Start learning today!',                     NOW() - INTERVAL '25 days'),
-(2,   'COURSE_ASSIGNED',     'New Course Available',       'Spring Boot Masterclass is now available for your department.',                                       NOW() - INTERVAL '11 days'),
-(3,   'COURSE_ASSIGNED',     'New Course Available',       'You have been enrolled in Java Programming Fundamentals. Start learning today!',                     NOW() - INTERVAL '20 days'),
-(4,   'COURSE_ASSIGNED',     'New Course Available',       'Java Programming Fundamentals is now assigned to your department.',                                   NOW() - INTERVAL '20 days'),
-(5,   'COURSE_ASSIGNED',     'New Course Available',       'Quality Assurance & Testing is ready. Complete all sections to earn your certificate.',              NOW() - INTERVAL '25 days'),
-(6,   'COURSE_ASSIGNED',     'New Course Available',       'You have been enrolled in Quality Assurance & Testing.',                                              NOW() - INTERVAL '20 days'),
-(7,   'COURSE_ASSIGNED',     'New Course Available',       'Quality Assurance & Testing has been assigned to your team.',                                         NOW() - INTERVAL '20 days'),
-(8,   'COURSE_ASSIGNED',     'New Course Available',       'You have been enrolled in Database Design with PostgreSQL.',                                          NOW() - INTERVAL '28 days'),
-(9,   'COURSE_ASSIGNED',     'New Course Available',       'Docker & Kubernetes Essentials has been assigned to your department.',                                NOW() - INTERVAL '10 days'),
-(10,  'COURSE_ASSIGNED',     'New Course Available',       'Docker & Kubernetes Essentials is now available for DevOps.',                                         NOW() - INTERVAL '10 days'),
-(11,  'COURSE_ASSIGNED',     'New Course Available',       'Data Analysis with Python is now available. Sharpen your analytics skills!',                         NOW() - INTERVAL '35 days'),
-(12,  'COURSE_ASSIGNED',     'New Course Available',       'Data Analysis with Python has been assigned to the Data & Analytics team.',                           NOW() - INTERVAL '25 days'),
-(13,  'COURSE_ASSIGNED',     'New Course Available',       'Agile & Scrum Methodology has been assigned. Complete it before June 30.',                           NOW() - INTERVAL '10 days'),
-(14,  'COURSE_ASSIGNED',     'New Course Available',       'Cybersecurity Fundamentals is mandatory for Legal & Compliance. Deadline: April 30.',                NOW() - INTERVAL '15 days'),
-(15,  'COURSE_ASSIGNED',     'New Course Available',       'Cybersecurity Fundamentals is mandatory for Security department. Deadline: April 1.',                NOW() - INTERVAL '15 days'),
-(16,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Spring Boot Masterclass is due in 10 days. You are 50% through — keep going!',                       NOW() - INTERVAL '2 hours'),
-(17,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Java Programming Fundamentals is due in 8 days. You have 3 of 6 sections remaining.',                NOW() - INTERVAL '4 hours'),
-(18,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Docker & Kubernetes deadline is in 6 days. Complete sections 3 and 4 to finish.',                    NOW() - INTERVAL '1 hour'),
-(19,  'DEADLINE_REMINDER',   'Urgent: Course Not Started', 'Cybersecurity Fundamentals is due in 10 days and you have not started. Please begin immediately!',   NOW() - INTERVAL '30 minutes'),
-(20,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Agile & Scrum is due June 30. You have completed 1 of 4 sections.',                                  NOW() - INTERVAL '6 hours'),
-(21,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Database Design with PostgreSQL deadline is approaching. You are on section 2 of 6.',                NOW() - INTERVAL '3 hours'),
-(22,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Data Analysis with Python is due in 12 days. Keep up the momentum!',                                 NOW() - INTERVAL '5 hours'),
-(23,  'COURSE_OVERDUE',      'Congratulations!',           'You have successfully completed Java Programming Fundamentals with a score of 85%!',                 NOW() - INTERVAL '12 days'),
-(24,  'COURSE_OVERDUE',      'Congratulations!',           'Great work! You completed Java Programming Fundamentals with a score of 72%.',                       NOW() - INTERVAL '8 days'),
-(25,  'COURSE_OVERDUE',      'Congratulations!',           'Outstanding! You completed Quality Assurance & Testing with a score of 91%.',                        NOW() - INTERVAL '12 days'),
-(26,  'COURSE_OVERDUE',      'Congratulations!',           'Quality Assurance & Testing completed with a score of 80%. Well done, Grace!',                       NOW() - INTERVAL '9 days'),
-(27,  'COURSE_OVERDUE',      'Congratulations!',           'Quality Assurance & Testing completed with a score of 76%. Certificate issued!',                     NOW() - INTERVAL '5 days'),
-(28,  'COURSE_OVERDUE',      'Congratulations!',           'Database Design with PostgreSQL completed with a score of 88%! Excellent work.',                     NOW() - INTERVAL '15 days'),
-(29,  'COURSE_OVERDUE',      'Congratulations!',           'Data Analysis with Python completed. Score: 74%. Your certificate is ready!',                        NOW() - INTERVAL '22 days'),
-(30,  'COURSE_OVERDUE',      'Congratulations!',           'Cybersecurity Fundamentals completed with an outstanding score of 92%!',                             NOW() - INTERVAL '10 days'),
-(31,  'CERTIFICATE_READY',   'Certificate Ready',          'Your Java Programming Fundamentals certificate is ready. Download it from your profile.',            NOW() - INTERVAL '12 days'),
-(32,  'CERTIFICATE_READY',   'Certificate Ready',          'Your Java Programming Fundamentals certificate has been issued.',                                    NOW() - INTERVAL '8 days'),
-(33,  'CERTIFICATE_READY',   'Certificate Ready',          'Your QA & Testing certificate is ready for download. Share it on LinkedIn!',                        NOW() - INTERVAL '12 days'),
-(34,  'CERTIFICATE_READY',   'Certificate Ready',          'Your QA & Testing certificate has been issued.',                                                     NOW() - INTERVAL '9 days'),
-(35,  'CERTIFICATE_READY',   'Certificate Ready',          'Your QA & Testing certificate is available in your profile.',                                        NOW() - INTERVAL '5 days'),
-(36,  'CERTIFICATE_READY',   'Certificate Ready',          'Your Database Design certificate is ready. Share it on LinkedIn!',                                   NOW() - INTERVAL '15 days'),
-(37,  'CERTIFICATE_READY',   'Certificate Ready',          'Your Data Analysis with Python certificate has been issued.',                                        NOW() - INTERVAL '22 days'),
-(38,  'CERTIFICATE_READY',   'Certificate Ready',          'Your Cybersecurity Fundamentals certificate is ready for download.',                                 NOW() - INTERVAL '10 days'),
-(39,  'QCM_RESULT',          'Exam Results Available',     'Your Java Programming final exam results are available. You scored 85/100.',                         NOW() - INTERVAL '12 days'),
-(40,  'QCM_RESULT',          'Exam Results Available',     'Java Programming final exam results published. Your score: 55/100. One retry remaining.',            NOW() - INTERVAL '10 days'),
-(41,  'QCM_RESULT',          'Exam Results Available',     'Java Programming final exam: 72/100. Congratulations, you passed!',                                  NOW() - INTERVAL '8 days'),
-(42,  'QCM_RESULT',          'Exam Results Available',     'Java Programming final exam: 52/100. Maximum attempts reached. Please contact HR.',                  NOW() - INTERVAL '18 days'),
-(43,  'QCM_RESULT',          'Exam Results Available',     'QA & Testing final exam: 91/100. Outstanding performance!',                                          NOW() - INTERVAL '12 days'),
-(44,  'QCM_RESULT',          'Exam Results Available',     'Database Design final exam: 88/100. Results posted to your profile.',                                NOW() - INTERVAL '15 days'),
-(45,  'QCM_RESULT',          'Exam Results Available',     'Data Analysis final exam: 74/100. You passed. Certificate issued.',                                  NOW() - INTERVAL '22 days'),
+(1,   'COURSE_ASSIGNED',     'New Course Available',       'You have been enrolled in Java Programming Fundamentals. Start learning today!',                     DATEADD(day, -25, NOW())),
+(2,   'COURSE_ASSIGNED',     'New Course Available',       'Spring Boot Masterclass is now available for your department.',                                       DATEADD(day, -11, NOW())),
+(3,   'COURSE_ASSIGNED',     'New Course Available',       'You have been enrolled in Java Programming Fundamentals. Start learning today!',                     DATEADD(day, -20, NOW())),
+(4,   'COURSE_ASSIGNED',     'New Course Available',       'Java Programming Fundamentals is now assigned to your department.',                                   DATEADD(day, -20, NOW())),
+(5,   'COURSE_ASSIGNED',     'New Course Available',       'Quality Assurance & Testing is ready. Complete all sections to earn your certificate.',              DATEADD(day, -25, NOW())),
+(6,   'COURSE_ASSIGNED',     'New Course Available',       'You have been enrolled in Quality Assurance & Testing.',                                              DATEADD(day, -20, NOW())),
+(7,   'COURSE_ASSIGNED',     'New Course Available',       'Quality Assurance & Testing has been assigned to your team.',                                         DATEADD(day, -20, NOW())),
+(8,   'COURSE_ASSIGNED',     'New Course Available',       'You have been enrolled in Database Design with PostgreSQL.',                                          DATEADD(day, -28, NOW())),
+(9,   'COURSE_ASSIGNED',     'New Course Available',       'Docker & Kubernetes Essentials has been assigned to your department.',                                DATEADD(day, -10, NOW())),
+(10,  'COURSE_ASSIGNED',     'New Course Available',       'Docker & Kubernetes Essentials is now available for DevOps.',                                         DATEADD(day, -10, NOW())),
+(11,  'COURSE_ASSIGNED',     'New Course Available',       'Data Analysis with Python is now available. Sharpen your analytics skills!',                         DATEADD(day, -35, NOW())),
+(12,  'COURSE_ASSIGNED',     'New Course Available',       'Data Analysis with Python has been assigned to the Data & Analytics team.',                           DATEADD(day, -25, NOW())),
+(13,  'COURSE_ASSIGNED',     'New Course Available',       'Agile & Scrum Methodology has been assigned. Complete it before June 30.',                           DATEADD(day, -10, NOW())),
+(14,  'COURSE_ASSIGNED',     'New Course Available',       'Cybersecurity Fundamentals is mandatory for Legal & Compliance. Deadline: April 30.',                DATEADD(day, -15, NOW())),
+(15,  'COURSE_ASSIGNED',     'New Course Available',       'Cybersecurity Fundamentals is mandatory for Security department. Deadline: April 1.',                DATEADD(day, -15, NOW())),
+(16,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Spring Boot Masterclass is due in 10 days. You are 50% through — keep going!',                       DATEADD(hour, -2, NOW())),
+(17,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Java Programming Fundamentals is due in 8 days. You have 3 of 6 sections remaining.',                DATEADD(hour, -4, NOW())),
+(18,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Docker & Kubernetes deadline is in 6 days. Complete sections 3 and 4 to finish.',                    DATEADD(hour, -1, NOW())),
+(19,  'DEADLINE_REMINDER',   'Urgent: Course Not Started', 'Cybersecurity Fundamentals is due in 10 days and you have not started. Please begin immediately!',   DATEADD(minute, -30, NOW())),
+(20,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Agile & Scrum is due June 30. You have completed 1 of 4 sections.',                                  DATEADD(hour, -6, NOW())),
+(21,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Database Design with PostgreSQL deadline is approaching. You are on section 2 of 6.',                DATEADD(hour, -3, NOW())),
+(22,  'DEADLINE_REMINDER',   'Course Assignment Reminder', 'Data Analysis with Python is due in 12 days. Keep up the momentum!',                                 DATEADD(hour, -5, NOW())),
+(23,  'COURSE_OVERDUE',      'Congratulations!',           'You have successfully completed Java Programming Fundamentals with a score of 85%!',                 DATEADD(day, -12, NOW())),
+(24,  'COURSE_OVERDUE',      'Congratulations!',           'Great work! You completed Java Programming Fundamentals with a score of 72%.',                       DATEADD(day, -8, NOW())),
+(25,  'COURSE_OVERDUE',      'Congratulations!',           'Outstanding! You completed Quality Assurance & Testing with a score of 91%.',                        DATEADD(day, -12, NOW())),
+(26,  'COURSE_OVERDUE',      'Congratulations!',           'Quality Assurance & Testing completed with a score of 80%. Well done, Grace!',                       DATEADD(day, -9, NOW())),
+(27,  'COURSE_OVERDUE',      'Congratulations!',           'Quality Assurance & Testing completed with a score of 76%. Certificate issued!',                     DATEADD(day, -5, NOW())),
+(28,  'COURSE_OVERDUE',      'Congratulations!',           'Database Design with PostgreSQL completed with a score of 88%! Excellent work.',                     DATEADD(day, -15, NOW())),
+(29,  'COURSE_OVERDUE',      'Congratulations!',           'Data Analysis with Python completed. Score: 74%. Your certificate is ready!',                        DATEADD(day, -22, NOW())),
+(30,  'COURSE_OVERDUE',      'Congratulations!',           'Cybersecurity Fundamentals completed with an outstanding score of 92%!',                             DATEADD(day, -10, NOW())),
+(31,  'CERTIFICATE_READY',   'Certificate Ready',          'Your Java Programming Fundamentals certificate is ready. Download it from your profile.',            DATEADD(day, -12, NOW())),
+(32,  'CERTIFICATE_READY',   'Certificate Ready',          'Your Java Programming Fundamentals certificate has been issued.',                                    DATEADD(day, -8, NOW())),
+(33,  'CERTIFICATE_READY',   'Certificate Ready',          'Your QA & Testing certificate is ready for download. Share it on LinkedIn!',                        DATEADD(day, -12, NOW())),
+(34,  'CERTIFICATE_READY',   'Certificate Ready',          'Your QA & Testing certificate has been issued.',                                                     DATEADD(day, -9, NOW())),
+(35,  'CERTIFICATE_READY',   'Certificate Ready',          'Your QA & Testing certificate is available in your profile.',                                        DATEADD(day, -5, NOW())),
+(36,  'CERTIFICATE_READY',   'Certificate Ready',          'Your Database Design certificate is ready. Share it on LinkedIn!',                                   DATEADD(day, -15, NOW())),
+(37,  'CERTIFICATE_READY',   'Certificate Ready',          'Your Data Analysis with Python certificate has been issued.',                                        DATEADD(day, -22, NOW())),
+(38,  'CERTIFICATE_READY',   'Certificate Ready',          'Your Cybersecurity Fundamentals certificate is ready for download.',                                 DATEADD(day, -10, NOW())),
+(39,  'QCM_RESULT',          'Exam Results Available',     'Your Java Programming final exam results are available. You scored 85/100.',                         DATEADD(day, -12, NOW())),
+(40,  'QCM_RESULT',          'Exam Results Available',     'Java Programming final exam results published. Your score: 55/100. One retry remaining.',            DATEADD(day, -10, NOW())),
+(41,  'QCM_RESULT',          'Exam Results Available',     'Java Programming final exam: 72/100. Congratulations, you passed!',                                  DATEADD(day, -8, NOW())),
+(42,  'QCM_RESULT',          'Exam Results Available',     'Java Programming final exam: 52/100. Maximum attempts reached. Please contact HR.',                  DATEADD(day, -18, NOW())),
+(43,  'QCM_RESULT',          'Exam Results Available',     'QA & Testing final exam: 91/100. Outstanding performance!',                                          DATEADD(day, -12, NOW())),
+(44,  'QCM_RESULT',          'Exam Results Available',     'Database Design final exam: 88/100. Results posted to your profile.',                                DATEADD(day, -15, NOW())),
+(45,  'QCM_RESULT',          'Exam Results Available',     'Data Analysis final exam: 74/100. You passed. Certificate issued.',                                  DATEADD(day, -22, NOW())),
 -- FIX: These 8 rows were previously malformed inside employee_notifications.
 --      They belong in the notifications table and are inserted here correctly.
-(46,  'QCM_RESULT',          'Exam Results Available',     'Cybersecurity final exam: 92/100. Exceptional result!',                                              NOW() - INTERVAL '10 days'),
-(47,  'SYSTEM_ALERT',        'New Learning Resources Available','Advanced Java video tutorials are now in the course library. Check them out!',                  NOW() - INTERVAL '8 hours'),
-(48,  'SYSTEM_ALERT',        'Platform Maintenance Scheduled',  'System maintenance on March 25, 2026 from 02:00-04:00 UTC. Service may be briefly unavailable.',NOW() - INTERVAL '6 hours'),
-(49,  'SYSTEM_ALERT',        'Q&A Session Coming Up',           'Live Q&A on testing best practices this Friday at 2 PM. Link in Slack #training.',              NOW() - INTERVAL '2 hours'),
-(50,  'SYSTEM_ALERT',        'Kubernetes v1.30 Release',        'Kubernetes 1.30 is out. Check the release notes and update your course knowledge.',              NOW() - INTERVAL '1 day'),
-(51,  'SYSTEM_ALERT',        'Mandatory Security Training',     'Cybersecurity Fundamentals is mandatory for Security dept. Deadline: April 1. Please start now.',NOW() - INTERVAL '3 days'),
-(52,  'SYSTEM_ALERT',        'Data Team Workshop',              'Monthly data workshop scheduled for March 28. Attendance required for all analytics staff.',     NOW() - INTERVAL '12 hours'),
-(53,  'SYSTEM_ALERT',        'GDPR Course Coming Soon',         'GDPR & Data Privacy Compliance course launches next quarter. Legal team will be first enrolled.', NOW() - INTERVAL '2 days');
+(46,  'QCM_RESULT',          'Exam Results Available',     'Cybersecurity final exam: 92/100. Exceptional result!',                                              DATEADD(day, -10, NOW())),
+(47,  'SYSTEM_ALERT',        'New Learning Resources Available','Advanced Java video tutorials are now in the course library. Check them out!',                  DATEADD(hour, -8, NOW())),
+(48,  'SYSTEM_ALERT',        'Platform Maintenance Scheduled',  'System maintenance on March 25, 2026 from 02:00-04:00 UTC. Service may be briefly unavailable.',DATEADD(hour, -6, NOW())),
+(49,  'SYSTEM_ALERT',        'Q&A Session Coming Up',           'Live Q&A on testing best practices this Friday at 2 PM. Link in Slack #training.',              DATEADD(hour, -2, NOW())),
+(50,  'SYSTEM_ALERT',        'Kubernetes v1.30 Release',        'Kubernetes 1.30 is out. Check the release notes and update your course knowledge.',              DATEADD(day, -1, NOW())),
+(51,  'SYSTEM_ALERT',        'Mandatory Security Training',     'Cybersecurity Fundamentals is mandatory for Security dept. Deadline: April 1. Please start now.',DATEADD(day, -3, NOW())),
+(52,  'SYSTEM_ALERT',        'Data Team Workshop',              'Monthly data workshop scheduled for March 28. Attendance required for all analytics staff.',     DATEADD(hour, -12, NOW())),
+(53,  'SYSTEM_ALERT',        'GDPR Course Coming Soon',         'GDPR & Data Privacy Compliance course launches next quarter. Legal team will be first enrolled.', DATEADD(day, -2, NOW()));
 
 -- Link notifications to employees (employee_notifications join table)
 -- Columns: (employee_id, notification_id, is_read, created_at)
 INSERT INTO employee_notifications (employee_id, notification_id, is_read, created_at) VALUES
-(6,   1,  FALSE, NOW() - INTERVAL '25 days'),
-(6,   2,  FALSE, NOW() - INTERVAL '11 days'),
-(7,   3,  FALSE, NOW() - INTERVAL '20 days'),
-(8,   4,  FALSE, NOW() - INTERVAL '20 days'),
-(12,  5,  FALSE, NOW() - INTERVAL '25 days'),
-(13,  6,  FALSE, NOW() - INTERVAL '20 days'),
-(14,  7,  FALSE, NOW() - INTERVAL '20 days'),
-(9,   8,  FALSE, NOW() - INTERVAL '28 days'),
-(15,  9,  FALSE, NOW() - INTERVAL '10 days'),
-(16,  10, FALSE, NOW() - INTERVAL '10 days'),
-(33,  11, FALSE, NOW() - INTERVAL '35 days'),
-(34,  12, FALSE, NOW() - INTERVAL '25 days'),
-(18,  13, FALSE, NOW() - INTERVAL '10 days'),
-(31,  14, FALSE, NOW() - INTERVAL '15 days'),
-(41,  15, FALSE, NOW() - INTERVAL '15 days'),
-(6,   16, FALSE, NOW() - INTERVAL '2 hours'),
-(7,   17, FALSE, NOW() - INTERVAL '4 hours'),
-(15,  18, FALSE, NOW() - INTERVAL '1 hour'),
-(41,  19, FALSE, NOW() - INTERVAL '30 minutes'),
-(18,  20, FALSE, NOW() - INTERVAL '6 hours'),
-(11,  21, FALSE, NOW() - INTERVAL '3 hours'),
-(34,  22, FALSE, NOW() - INTERVAL '5 hours'),
-(6,   23, TRUE,  NOW() - INTERVAL '12 days'),
-(8,   24, TRUE,  NOW() - INTERVAL '8 days'),
-(12,  25, TRUE,  NOW() - INTERVAL '12 days'),
-(13,  26, TRUE,  NOW() - INTERVAL '9 days'),
-(14,  27, TRUE,  NOW() - INTERVAL '5 days'),
-(9,   28, TRUE,  NOW() - INTERVAL '15 days'),
-(33,  29, TRUE,  NOW() - INTERVAL '22 days'),
-(31,  30, TRUE,  NOW() - INTERVAL '10 days'),
-(6,   31, TRUE,  NOW() - INTERVAL '12 days'),
-(8,   32, TRUE,  NOW() - INTERVAL '8 days'),
-(12,  33, TRUE,  NOW() - INTERVAL '12 days'),
-(13,  34, TRUE,  NOW() - INTERVAL '9 days'),
-(14,  35, TRUE,  NOW() - INTERVAL '5 days'),
-(9,   36, TRUE,  NOW() - INTERVAL '15 days'),
-(33,  37, TRUE,  NOW() - INTERVAL '22 days'),
-(31,  38, TRUE,  NOW() - INTERVAL '10 days'),
-(6,   39, TRUE,  NOW() - INTERVAL '12 days'),
-(7,   40, FALSE, NOW() - INTERVAL '10 days'),
-(8,   41, TRUE,  NOW() - INTERVAL '8 days'),
-(10,  42, FALSE, NOW() - INTERVAL '18 days'),
-(12,  43, TRUE,  NOW() - INTERVAL '12 days'),
-(9,   44, TRUE,  NOW() - INTERVAL '15 days'),
-(33,  45, TRUE,  NOW() - INTERVAL '22 days'),
+(6,   1,  FALSE, DATEADD(day, -25, NOW())),
+(6,   2,  FALSE, DATEADD(day, -11, NOW())),
+(7,   3,  FALSE, DATEADD(day, -20, NOW())),
+(8,   4,  FALSE, DATEADD(day, -20, NOW())),
+(12,  5,  FALSE, DATEADD(day, -25, NOW())),
+(13,  6,  FALSE, DATEADD(day, -20, NOW())),
+(14,  7,  FALSE, DATEADD(day, -20, NOW())),
+(9,   8,  FALSE, DATEADD(day, -28, NOW())),
+(15,  9,  FALSE, DATEADD(day, -10, NOW())),
+(16,  10, FALSE, DATEADD(day, -10, NOW())),
+(33,  11, FALSE, DATEADD(day, -35, NOW())),
+(34,  12, FALSE, DATEADD(day, -25, NOW())),
+(18,  13, FALSE, DATEADD(day, -10, NOW())),
+(31,  14, FALSE, DATEADD(day, -15, NOW())),
+(41,  15, FALSE, DATEADD(day, -15, NOW())),
+(6,   16, FALSE, DATEADD(hour, -2, NOW())),
+(7,   17, FALSE, DATEADD(hour, -4, NOW())),
+(15,  18, FALSE, DATEADD(hour, -1, NOW())),
+(41,  19, FALSE, DATEADD(minute, -30, NOW())),
+(18,  20, FALSE, DATEADD(hour, -6, NOW())),
+(11,  21, FALSE, DATEADD(hour, -3, NOW())),
+(34,  22, FALSE, DATEADD(hour, -5, NOW())),
+(6,   23, TRUE,  DATEADD(day, -12, NOW())),
+(8,   24, TRUE,  DATEADD(day, -8, NOW())),
+(12,  25, TRUE,  DATEADD(day, -12, NOW())),
+(13,  26, TRUE,  DATEADD(day, -9, NOW())),
+(14,  27, TRUE,  DATEADD(day, -5, NOW())),
+(9,   28, TRUE,  DATEADD(day, -15, NOW())),
+(33,  29, TRUE,  DATEADD(day, -22, NOW())),
+(31,  30, TRUE,  DATEADD(day, -10, NOW())),
+(6,   31, TRUE,  DATEADD(day, -12, NOW())),
+(8,   32, TRUE,  DATEADD(day, -8, NOW())),
+(12,  33, TRUE,  DATEADD(day, -12, NOW())),
+(13,  34, TRUE,  DATEADD(day, -9, NOW())),
+(14,  35, TRUE,  DATEADD(day, -5, NOW())),
+(9,   36, TRUE,  DATEADD(day, -15, NOW())),
+(33,  37, TRUE,  DATEADD(day, -22, NOW())),
+(31,  38, TRUE,  DATEADD(day, -10, NOW())),
+(6,   39, TRUE,  DATEADD(day, -12, NOW())),
+(7,   40, FALSE, DATEADD(day, -10, NOW())),
+(8,   41, TRUE,  DATEADD(day, -8, NOW())),
+(10,  42, FALSE, DATEADD(day, -18, NOW())),
+(12,  43, TRUE,  DATEADD(day, -12, NOW())),
+(9,   44, TRUE,  DATEADD(day, -15, NOW())),
+(33,  45, TRUE,  DATEADD(day, -22, NOW())),
 -- FIX: These rows now correctly reference notifications 46-53 defined above.
-(31,  46, TRUE,  NOW() - INTERVAL '10 days'),
-(6,   47, FALSE, NOW() - INTERVAL '8 hours'),
-(7,   48, FALSE, NOW() - INTERVAL '6 hours'),
-(12,  49, FALSE, NOW() - INTERVAL '2 hours'),
-(15,  50, FALSE, NOW() - INTERVAL '1 day'),
-(41,  51, FALSE, NOW() - INTERVAL '3 days'),
-(33,  52, FALSE, NOW() - INTERVAL '12 hours'),
-(31,  53, FALSE, NOW() - INTERVAL '2 days');
+(31,  46, TRUE,  DATEADD(day, -10, NOW())),
+(6,   47, FALSE, DATEADD(hour, -8, NOW())),
+(7,   48, FALSE, DATEADD(hour, -6, NOW())),
+(12,  49, FALSE, DATEADD(hour, -2, NOW())),
+(15,  50, FALSE, DATEADD(day, -1, NOW())),
+(41,  51, FALSE, DATEADD(day, -3, NOW())),
+(33,  52, FALSE, DATEADD(hour, -12, NOW())),
+(31,  53, FALSE, DATEADD(day, -2, NOW()));
 
 -- =========== AUDIT LOGS ===========
 INSERT INTO audit_logs (id, user_id, action_type, entity_type, entity_id, timestamp, old_value, new_value) VALUES
 -- Course lifecycle
-(1,  1, 'CREATE',   'Course',      1,  NOW() - INTERVAL '60 days',  NULL,                                                        '{"title":"Java Programming Fundamentals","status":"DRAFT"}'),
-(2,  1, 'UPDATE',   'Course',      1,  NOW() - INTERVAL '55 days',  '{"status":"DRAFT"}',                                        '{"status":"PUBLISHED"}'),
-(3,  1, 'CREATE',   'Course',      2,  NOW() - INTERVAL '58 days',  NULL,                                                        '{"title":"Spring Boot Masterclass","status":"DRAFT"}'),
-(4,  1, 'UPDATE',   'Course',      2,  NOW() - INTERVAL '50 days',  '{"status":"DRAFT"}',                                        '{"status":"PUBLISHED"}'),
-(5,  2, 'CREATE',   'Course',      6,  NOW() - INTERVAL '45 days',  NULL,                                                        '{"title":"Docker & Kubernetes Essentials","status":"DRAFT"}'),
-(6,  2, 'UPDATE',   'Course',      6,  NOW() - INTERVAL '40 days',  '{"status":"DRAFT"}',                                        '{"status":"PUBLISHED"}'),
-(7,  3, 'CREATE',   'Course',      4,  NOW() - INTERVAL '50 days',  NULL,                                                        '{"title":"Quality Assurance & Testing","status":"DRAFT"}'),
-(8,  3, 'UPDATE',   'Course',      4,  NOW() - INTERVAL '44 days',  '{"status":"DRAFT"}',                                        '{"status":"PUBLISHED"}'),
-(9,  5, 'CREATE',   'Course',      9,  NOW() - INTERVAL '35 days',  NULL,                                                        '{"title":"Agile & Scrum Methodology","status":"DRAFT"}'),
-(10, 5, 'UPDATE',   'Course',      9,  NOW() - INTERVAL '30 days',  '{"status":"DRAFT"}',                                        '{"status":"PUBLISHED"}'),
-(11, 1, 'UPDATE',   'Course',      13, NOW() - INTERVAL '90 days',  '{"status":"PUBLISHED","deleted":false}',                    '{"status":"ARCHIVED","deleted":true}'),
+(1,  1, 'CREATE',   'Course',      1,  DATEADD(day, -60, NOW()),  NULL,                                                        '{"title":"Java Programming Fundamentals","status":"DRAFT"}'),
+(2,  1, 'UPDATE',   'Course',      1,  DATEADD(day, -55, NOW()),  '{"status":"DRAFT"}',                                        '{"status":"PUBLISHED"}'),
+(3,  1, 'CREATE',   'Course',      2,  DATEADD(day, -58, NOW()),  NULL,                                                        '{"title":"Spring Boot Masterclass","status":"DRAFT"}'),
+(4,  1, 'UPDATE',   'Course',      2,  DATEADD(day, -50, NOW()),  '{"status":"DRAFT"}',                                        '{"status":"PUBLISHED"}'),
+(5,  2, 'CREATE',   'Course',      6,  DATEADD(day, -45, NOW()),  NULL,                                                        '{"title":"Docker & Kubernetes Essentials","status":"DRAFT"}'),
+(6,  2, 'UPDATE',   'Course',      6,  DATEADD(day, -40, NOW()),  '{"status":"DRAFT"}',                                        '{"status":"PUBLISHED"}'),
+(7,  3, 'CREATE',   'Course',      4,  DATEADD(day, -50, NOW()),  NULL,                                                        '{"title":"Quality Assurance & Testing","status":"DRAFT"}'),
+(8,  3, 'UPDATE',   'Course',      4,  DATEADD(day, -44, NOW()),  '{"status":"DRAFT"}',                                        '{"status":"PUBLISHED"}'),
+(9,  5, 'CREATE',   'Course',      9,  DATEADD(day, -35, NOW()),  NULL,                                                        '{"title":"Agile & Scrum Methodology","status":"DRAFT"}'),
+(10, 5, 'UPDATE',   'Course',      9,  DATEADD(day, -30, NOW()),  '{"status":"DRAFT"}',                                        '{"status":"PUBLISHED"}'),
+(11, 1, 'UPDATE',   'Course',      13, DATEADD(day, -90, NOW()),  '{"status":"PUBLISHED","deleted":false}',                    '{"status":"ARCHIVED","deleted":true}'),
 -- Employee management
-(12, 4, 'CREATE',   'Employee',    28, NOW() - INTERVAL '90 days',  NULL,                                                        '{"email":"vera.lindqvist@example.com","role":"ROLE_EMPLOYEE"}'),
-(13, 4, 'CREATE',   'Employee',    29, NOW() - INTERVAL '88 days',  NULL,                                                        '{"email":"william.tan@example.com","role":"ROLE_EMPLOYEE"}'),
-(14, 4, 'CREATE',   'Employee',    41, NOW() - INTERVAL '120 days', NULL,                                                        '{"email":"igor.volkov@example.com","department_id":18}'),
-(15, 1, 'DELETE',   'Employee',    43, NOW() - INTERVAL '10 days',  '{"email":"karl.deleted@example.com","deleted":false}',      '{"deleted":true}'),
-(16, 1, 'DELETE',   'Employee',    44, NOW() - INTERVAL '5 days',   '{"email":"lena.deleted@example.com","deleted":false}',      '{"deleted":true}'),
+(12, 4, 'CREATE',   'Employee',    28, DATEADD(day, -90, NOW()),  NULL,                                                        '{"email":"vera.lindqvist@example.com","role":"ROLE_EMPLOYEE"}'),
+(13, 4, 'CREATE',   'Employee',    29, DATEADD(day, -88, NOW()),  NULL,                                                        '{"email":"william.tan@example.com","role":"ROLE_EMPLOYEE"}'),
+(14, 4, 'CREATE',   'Employee',    41, DATEADD(day, -120, NOW()), NULL,                                                        '{"email":"igor.volkov@example.com","department_id":18}'),
+(15, 1, 'DELETE',   'Employee',    43, DATEADD(day, -10, NOW()),  '{"email":"karl.deleted@example.com","deleted":false}',      '{"deleted":true}'),
+(16, 1, 'DELETE',   'Employee',    44, DATEADD(day, -5, NOW()),   '{"email":"lena.deleted@example.com","deleted":false}',      '{"deleted":true}'),
 -- Certificate revocation
-(17, 1, 'REVOKE',   'Certificate', 9,  NOW() - INTERVAL '28 days',  '{"employee_id":7,"revoked":false}',                         '{"revoked":true,"reason":"Issued in error - employee had not completed all sections"}'),
+(17, 1, 'REVOKE',   'Certificate', 9,  DATEADD(day, -28, NOW()),  '{"employee_id":7,"revoked":false}',                         '{"revoked":true,"reason":"Issued in error - employee had not completed all sections"}'),
 -- Grade override
-(18, 2, 'OVERRIDE', 'CourseGrade', 10, NOW() - INTERVAL '7 days',   '{"employee_id":10,"final_score":52}',                       '{"employee_id":10,"final_score":52,"note":"Max attempts reached, no re-sit permitted per policy"}'),
+(18, 2, 'OVERRIDE', 'CourseGrade', 10, DATEADD(day, -7, NOW()),   '{"employee_id":10,"final_score":52}',                       '{"employee_id":10,"final_score":52,"note":"Max attempts reached, no re-sit permitted per policy"}'),
 -- Department restructuring
-(19, 1, 'CREATE',   'Department',  18, NOW() - INTERVAL '120 days', NULL,                                                        '{"name":"Security","parent_department_id":1}'),
-(20, 1, 'UPDATE',   'Department',  15, NOW() - INTERVAL '100 days', '{"name":"Data Science"}',                                   '{"name":"Data & Analytics"}'),
-(21, 1, 'CREATE',   'Department',  4,  NOW() - INTERVAL '150 days', NULL,                                                        '{"name":"DevOps & Infrastructure","parent_department_id":1}'),
+(19, 1, 'CREATE',   'Department',  18, DATEADD(day, -120, NOW()), NULL,                                                        '{"name":"Security","parent_department_id":1}'),
+(20, 1, 'UPDATE',   'Department',  15, DATEADD(day, -100, NOW()), '{"name":"Data Science"}',                                   '{"name":"Data & Analytics"}'),
+(21, 1, 'CREATE',   'Department',  4,  DATEADD(day, -150, NOW()), NULL,                                                        '{"name":"DevOps & Infrastructure","parent_department_id":1}'),
 -- Course section edits
-(22, 2, 'UPDATE',   'CourseSection',9, NOW() - INTERVAL '35 days',  '{"title":"Authentication in Spring"}',                      '{"title":"Security with Spring Security"}'),
-(23, 3, 'CREATE',   'CourseSection',23,NOW() - INTERVAL '44 days',  NULL,                                                        '{"title":"API Testing with REST Assured","course_id":4}');
+(22, 2, 'UPDATE',   'CourseSection',9, DATEADD(day, -35, NOW()),  '{"title":"Authentication in Spring"}',                      '{"title":"Security with Spring Security"}'),
+(23, 3, 'CREATE',   'CourseSection',23,DATEADD(day, -44, NOW()),  NULL,                                                        '{"title":"API Testing with REST Assured","course_id":4}');
 
 -- =========== UPDATE SEQUENCES ===========
-ALTER SEQUENCE departments_id_seq                   RESTART WITH 19;
-ALTER SEQUENCE employees_id_seq                     RESTART WITH 46;
-ALTER SEQUENCE courses_id_seq                       RESTART WITH 14;
--- FIX: sections go up to id 63, so next id is 64 (was incorrectly set to 59)
-ALTER SEQUENCE course_sections_id_seq               RESTART WITH 64;
-ALTER SEQUENCE qcm_questions_id_seq                 RESTART WITH 68;
-ALTER SEQUENCE course_department_assignments_id_seq RESTART WITH 32;
-ALTER SEQUENCE employee_course_progress_id_seq      RESTART WITH 60;
-ALTER SEQUENCE employee_qcm_attempts_id_seq         RESTART WITH 16;
-ALTER SEQUENCE employee_course_grades_id_seq        RESTART WITH 11;
-ALTER SEQUENCE certificates_id_seq                  RESTART WITH 10;
--- FIX: notifications now go up to id 53, so next id is 54 (was 46)
-ALTER SEQUENCE notifications_id_seq                 RESTART WITH 54;
--- FIX: employee_notifications now has 53 rows (was restarted at 46, but table has no explicit ids)
-ALTER SEQUENCE employee_notifications_id_seq        RESTART WITH 54;
-ALTER SEQUENCE audit_logs_id_seq                    RESTART WITH 24;
+-- NOTE: H2 handles sequence auto-increment automatically. These are kept for PostgreSQL compatibility.
+-- For H2 in-memory database, explicit sequence restarts are not necessary as sequences are auto-managed.
+-- For production PostgreSQL, uncomment these lines:
+-- ALTER SEQUENCE departments_id_seq                   RESTART WITH 19;
+-- ALTER SEQUENCE employees_id_seq                     RESTART WITH 46;
+-- ALTER SEQUENCE courses_id_seq                       RESTART WITH 14;
+-- ALTER SEQUENCE course_sections_id_seq               RESTART WITH 64;
+-- ALTER SEQUENCE qcm_questions_id_seq                 RESTART WITH 68;
+-- ALTER SEQUENCE course_department_assignments_id_seq RESTART WITH 32;
+-- ALTER SEQUENCE employee_course_progress_id_seq      RESTART WITH 60;
+-- ALTER SEQUENCE employee_qcm_attempts_id_seq         RESTART WITH 16;
+-- ALTER SEQUENCE employee_course_grades_id_seq        RESTART WITH 11;
+-- ALTER SEQUENCE certificates_id_seq                  RESTART WITH 10;
+-- ALTER SEQUENCE notifications_id_seq                 RESTART WITH 54;
+-- ALTER SEQUENCE employee_notifications_id_seq        RESTART WITH 54;
+-- ALTER SEQUENCE audit_logs_id_seq                    RESTART WITH 24;

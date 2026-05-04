@@ -23,10 +23,11 @@ CREATE TABLE employees (
     password        VARCHAR(255)    NOT NULL,
     role            VARCHAR(20)     NOT NULL CHECK (role IN ('ROLE_ADMIN', 'ROLE_EMPLOYEE')),
     department_id   BIGINT          REFERENCES departments(id),
-    deleted         BOOLEAN         NOT NULL DEFAULT FALSE
+    deleted         BOOLEAN         NOT NULL DEFAULT FALSE,
+    UNIQUE (email)
 );
 
-CREATE UNIQUE INDEX idx_employee_email ON employees(email) WHERE deleted = FALSE;
+-- Index for department lookups
 CREATE INDEX idx_employee_department ON employees(department_id);
 
 -- Courses
