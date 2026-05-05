@@ -644,21 +644,3 @@ INSERT INTO audit_logs (id, user_id, action_type, entity_type, entity_id, timest
 -- Course section edits
 (22, 2, 'UPDATE',   'CourseSection',9, DATEADD(day, -35, NOW()),  '{"title":"Authentication in Spring"}',                      '{"title":"Security with Spring Security"}'),
 (23, 3, 'CREATE',   'CourseSection',23,DATEADD(day, -44, NOW()),  NULL,                                                        '{"title":"API Testing with REST Assured","course_id":4}');
-
--- =========== UPDATE SEQUENCES ===========
--- NOTE: H2 handles sequence auto-increment automatically. These are kept for PostgreSQL compatibility.
--- For H2 in-memory database, explicit sequence restarts are not necessary as sequences are auto-managed.
--- For production PostgreSQL, uncomment these lines:
--- ALTER SEQUENCE departments_id_seq                   RESTART WITH 19;
--- ALTER SEQUENCE employees_id_seq                     RESTART WITH 46;
--- ALTER SEQUENCE courses_id_seq                       RESTART WITH 14;
--- ALTER SEQUENCE course_sections_id_seq               RESTART WITH 64;
--- ALTER SEQUENCE qcm_questions_id_seq                 RESTART WITH 68;
--- ALTER SEQUENCE course_department_assignments_id_seq RESTART WITH 32;
--- ALTER SEQUENCE employee_course_progress_id_seq      RESTART WITH 60;
--- ALTER SEQUENCE employee_qcm_attempts_id_seq         RESTART WITH 16;
--- ALTER SEQUENCE employee_course_grades_id_seq        RESTART WITH 11;
--- ALTER SEQUENCE certificates_id_seq                  RESTART WITH 10;
--- ALTER SEQUENCE notifications_id_seq                 RESTART WITH 54;
--- ALTER SEQUENCE employee_notifications_id_seq        RESTART WITH 54;
--- ALTER SEQUENCE audit_logs_id_seq                    RESTART WITH 24;

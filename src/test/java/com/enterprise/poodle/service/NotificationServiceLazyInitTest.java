@@ -21,11 +21,11 @@ class NotificationServiceLazyInitTest extends BaseIntegrationTest {
     private NotificationService notificationService;
 
     @Test
-    @DisplayName("✅ Should fetch notifications without LazyInitializationException")
+    @DisplayName("Should fetch notifications without LazyInitializationException")
     void testGetNotificationsWithLazyInitFix() throws Exception {
         String token = login("employee@test.com", "Employee@123");
         
-        log.info("🔍 Testing /api/notifications/me endpoint");
+        log.info("Testing /api/notifications/me endpoint");
         
         var result = mockMvc.perform(get("/api/notifications/me")
                 .header("Authorization", "Bearer " + token))
@@ -33,18 +33,18 @@ class NotificationServiceLazyInitTest extends BaseIntegrationTest {
                 .andReturn();
         
         String responseBody = result.getResponse().getContentAsString();
-        log.info("✅ Response received: {}", responseBody);
+        log.info("Response received: {}", responseBody);
         
         assertThat(responseBody).isNotEmpty();
         assertThat(result.getResponse().getStatus()).isEqualTo(200);
     }
 
     @Test
-    @DisplayName("✅ Should fetch unread notifications without LazyInitializationException")
+    @DisplayName("Should fetch unread notifications without LazyInitializationException")
     void testGetUnreadNotificationsWithLazyInitFix() throws Exception {
         String token = login("employee@test.com", "Employee@123");
         
-        log.info("🔍 Testing /api/notifications/me/unread endpoint");
+        log.info("Testing /api/notifications/me/unread endpoint");
         
         var result = mockMvc.perform(get("/api/notifications/me/unread")
                 .header("Authorization", "Bearer " + token))
@@ -52,17 +52,17 @@ class NotificationServiceLazyInitTest extends BaseIntegrationTest {
                 .andReturn();
         
         String responseBody = result.getResponse().getContentAsString();
-        log.info("✅ Unread notifications response: {}", responseBody);
+        log.info("Unread notifications response: {}", responseBody);
         
         assertThat(responseBody).isNotEmpty();
     }
 
     @Test
-    @DisplayName("✅ Should fetch notification count without LazyInitializationException")
+    @DisplayName("Should fetch notification count without LazyInitializationException")
     void testGetUnreadCountWithLazyInitFix() throws Exception {
         String token = login("employee@test.com", "Employee@123");
         
-        log.info("🔍 Testing /api/notifications/me/unread-count endpoint");
+        log.info("Testing /api/notifications/me/unread-count endpoint");
         
         var result = mockMvc.perform(get("/api/notifications/me/unread-count")
                 .header("Authorization", "Bearer " + token))
@@ -70,21 +70,21 @@ class NotificationServiceLazyInitTest extends BaseIntegrationTest {
                 .andReturn();
         
         String responseBody = result.getResponse().getContentAsString();
-        log.info("✅ Unread count: {}", responseBody);
+        log.info("Unread count: {}", responseBody);
         
         assertThat(responseBody).isNotEmpty();
         assertThat(Integer.parseInt(responseBody)).isGreaterThanOrEqualTo(0);
     }
 
     @Test
-    @DisplayName("✅ Direct service call - Verify lazy initialization in transaction")
+    @DisplayName("Direct service call - Verify lazy initialization in transaction")
     void testServiceDirectCallWithinTransaction() {
-        log.info("🔍 Testing NotificationService.getNotificationsForEmployee() directly");
+        log.info("Testing NotificationService.getNotificationsForEmployee() directly");
         
         // Within test transaction context
         var notifications = notificationService.getNotificationsForEmployee(1L);
         
-        log.info("✅ Retrieved {} notifications without exception", notifications.size());
+        log.info("Retrieved {} notifications without exception", notifications.size());
         
         // Verify notifications have all required fields
         notifications.forEach(notif -> {

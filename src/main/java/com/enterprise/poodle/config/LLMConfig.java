@@ -27,7 +27,7 @@ public class LLMConfig {
     @Bean
     public RestTemplate geminiRestTemplate(RestTemplateBuilder builder) {
         if (llmProperties.getApiKey() == null || llmProperties.getApiKey().isEmpty()) {
-            log.warn("⚠️ GEMINI_API_KEY not set - LLM features will use placeholder responses");
+            log.warn("GEMINI_API_KEY not set - LLM features will use placeholder responses");
         }
         return builder.build();
     }

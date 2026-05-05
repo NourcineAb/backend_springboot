@@ -15,7 +15,7 @@
     <artifactId>poodle</artifactId>
     <version>1.0.0</version>
     <name>Poodle LMS</name>
-    <description>Internal Corporate Training Platform - Enterprise LMS</description>
+    <description>Internal Corporate Pooodle - Enterprise LMS</description>
 
     <properties>
         <java.version>21</java.version>

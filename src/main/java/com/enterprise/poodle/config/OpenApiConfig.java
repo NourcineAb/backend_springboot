@@ -19,7 +19,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("Poodle LMS API")
-                        .description("Internal Corporate Training Platform - Enterprise LMS REST API")
+                        .description("Internal Corporate Pooodle - Enterprise LMS REST API")
                         .version("1.0.0")
                         .contact(new Contact()
                                 .name("Poodle LMS Team")

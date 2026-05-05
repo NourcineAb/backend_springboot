@@ -50,7 +50,7 @@ public class AuthService {
 
             // Keep Role enum as-is (ROLE_ADMIN, ROLE_EMPLOYEE) for consistent frontend checks
             String roleStr = employee.getRole().name();
-            log.info("✅ [SERVICE] Login processed - Email: {}, Role: {}", 
+            log.info("[SERVICE] Login processed - Email: {}, Role: {}", 
                     employee.getEmail(), roleStr);
 
             AuthResponse response = AuthResponse.builder()
@@ -64,17 +64,17 @@ public class AuthService {
             log.debug("✓ [SERVICE] AuthResponse built: {}", response);
             return response;
         } catch (Exception e) {
-            log.error("❌ [SERVICE] Authentication failed for {}: {}", request.getEmail(), e.getMessage());
+            log.error(" [SERVICE] Authentication failed for {}: {}", request.getEmail(), e.getMessage());
             throw e;
         }
     }
 
     @Transactional
     public EmployeeResponse register(RegisterRequest request) {
-        log.info("📝 [SERVICE] Starting registration for: {}", request.getEmail());
+        log.info(" [SERVICE] Starting registration for: {}", request.getEmail());
         
         if (employeeRepository.existsByEmailAndDeletedFalse(request.getEmail())) {
-            log.warn("⚠️  [SERVICE] Employee already exists: {}", request.getEmail());
+            log.warn("  [SERVICE] Employee already exists: {}", request.getEmail());
             throw new DuplicateResourceException(
                     "Employee with email " + request.getEmail() + " already exists");
         }
@@ -96,7 +96,7 @@ public class AuthService {
         }
 
         Employee saved = employeeRepository.save(employee);
-        log.info("✅ [SERVICE] Registration complete for: {}", request.getEmail());
+        log.info("[SERVICE] Registration complete for: {}", request.getEmail());
         return employeeMapper.toResponse(saved);
     }
 }
