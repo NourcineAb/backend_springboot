@@ -78,6 +78,12 @@ public class CertificateService {
     }
 
     @Transactional(readOnly = true)
+    public Page<CertificateResponse> getAllCertificates(Pageable pageable) {
+        return certificateRepository.findAllWithEagerLoading(pageable)
+                .map(this::mapToResponse);
+    }
+
+    @Transactional(readOnly = true)
     public CertificateVerificationResponse verifyCertificate(String certificateCode) {
         Certificate certificate = certificateRepository.findByCertificateCode(certificateCode)
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -106,6 +112,21 @@ public class CertificateService {
         certificate.setRevoked(true);
         certificateRepository.save(certificate);
         log.info("Certificate {} revoked", certificate.getCertificateCode());
+        return mapToResponse(certificate);
+    }
+
+    @Transactional
+    public CertificateResponse unrevokeCertificate(Long id) {
+        Certificate certificate = certificateRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Certificate", "id", id));
+
+        if (!certificate.isRevoked()) {
+            throw new BusinessException("Certificate is not revoked");
+        }
+
+        certificate.setRevoked(false);
+        certificateRepository.save(certificate);
+        log.info("Certificate {} unrevoked", certificate.getCertificateCode());
         return mapToResponse(certificate);
     }
 

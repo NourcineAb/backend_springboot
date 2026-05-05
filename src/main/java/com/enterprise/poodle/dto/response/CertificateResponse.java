@@ -9,8 +9,11 @@ import java.time.LocalDateTime;
 @Builder
 public class CertificateResponse {
     private Long id;
+    private Long employeeId;
     private String employeeName;
+    private Long courseId;
     private String courseTitle;
+    private Integer score;
     private String certificateCode;
     private String verificationCode;
     private String qrCodeUrl;

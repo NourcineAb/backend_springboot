@@ -26,6 +26,12 @@ public class CertificateController {
         return ResponseEntity.ok(certificateService.getMyCertificates(employeeId, pageable));
     }
 
+    @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Page<CertificateResponse>> getAllCertificates(Pageable pageable) {
+        return ResponseEntity.ok(certificateService.getAllCertificates(pageable));
+    }
+
     @GetMapping("/verify/{certificateCode}")
     public ResponseEntity<CertificateVerificationResponse> verifyCertificate(
             @PathVariable String certificateCode) {
@@ -36,5 +42,11 @@ public class CertificateController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CertificateResponse> revokeCertificate(@PathVariable Long id) {
         return ResponseEntity.ok(certificateService.revokeCertificate(id));
+    }
+
+    @PutMapping("/{id}/unrevoke")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<CertificateResponse> unrevokeCertificate(@PathVariable Long id) {
+        return ResponseEntity.ok(certificateService.unrevokeCertificate(id));
     }
 }
